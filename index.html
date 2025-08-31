@@ -1,319 +1,142 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Waves, Coffee, Instagram, Phone, Clock, Menu, X, Leaf, Sun, Sailboat, Wine } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selaras Beach</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+    header {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&q=80&auto=format&fit=crop&w=1400') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+    nav {
+      background: rgba(0,0,0,0.6);
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffd369;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .about, .services, .contact {
+      text-align: center;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .service-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
 
-// --- Configurable basics ---
-const SITE = {
-  name: "Selaras Beach",
-  tagline: "Tempat nongkrong santai, berkarya, bercerita, berbagi.",
-  description:
-    "Pantai kecil nan hangat di Pulau Dabo Singkep. Ada bar mini, stand up paddle board, dan beberapa spot nongkrong yang siap menemani soremu.",
-  whatsapp: "https://wa.me/6281234567890?text=Halo%20Selaras%20Beach%2C%20saya%20ingin%20reservasi", // ganti dengan nomor WA
-  instagram: "https://instagram.com/selaras.beach", // ganti dengan akun IG
-  maps: "https://maps.google.com/?q=Pantai+Selaras+Dabo+Singkep", // ganti koordinat jika ada
-  hours: [
-    { day: "Senin–Kamis", time: "15.00 – 22.00" },
-    { day: "Jumat", time: "15.00 – 23.00" },
-    { day: "Sabtu–Minggu", time: "10.00 – 23.00" },
-  ],
-};
+  <nav>
+    <a href="#about">Tentang</a>
+    <a href="#services">Layanan</a>
+    <a href="#contact">Kontak</a>
+  </nav>
 
-const ACTIVITIES = [
-  {
-    icon: Sailboat,
-    title: "Stand Up Paddle",
-    text:
-      "Board 330×83×15 cm, stabil buat pemula. Sunrise glide atau golden hour—keduanya juara.",
-    cta: "Booking Sesi",
-  },
-  {
-    icon: Waves,
-    title: "Chill by the Shore",
-    text:
-      "Spot bean bag & hammock. Dengerin ombak, ngobrol, dan nikmati angin pulau.",
-    cta: "Pesan Tempat",
-  },
-  {
-    icon: Coffee,
-    title: "Mini Beach Bar",
-    text:
-      "Kopi dingin, mocktail tropis, dan gigitan ringan. Bahan lokal, rasa maksimal.",
-    cta: "Lihat Menu",
-  },
-];
+  <header>
+    <h1>Selaras Beach</h1>
+    <p>Tempat nongkrong santai, berkarya, bercerita & berbagi</p>
+  </header>
 
-const MENU = [
-  { cat: "Kopi & Teh", items: [
-    { name: "Es Kopi Selaras", note: "espresso, susu, gula aren" },
-    { name: "Teh Tarik", note: "classic pulled tea" },
-    { name: "Cold Brew Citrus", note: "segar, jeruk lokal" },
-  ]},
-  { cat: "Signature Mocktail", items: [
-    { name: "Sunset Squash", note: "jeruk, lemon, soda" },
-    { name: "Coco Breeze", note: "kelapa, nanas, mint" },
-    { name: "Selaras Spritz", note: "soda, sirup jeruk" },
-  ]},
-  { cat: "Snack", items: [
-    { name: "Singkep Fries", note: "garam laut" },
-    { name: "Banana Bite", note: "gulat merah & kelapa" },
-    { name: "Tropical Toast", note: "nanas, madu" },
-  ]},
-];
+  <section id="about" class="about">
+    <h2>Tentang Kami</h2>
+    <p>Selaras Beach adalah ruang terbuka di tepi pantai untuk menikmati suasana santai, 
+    berkarya, bercerita, dan berbagi. Kami menghadirkan pengalaman unik dengan bar mini, 
+    stand up paddle board, dan spot nongkrong yang nyaman di tepi laut.</p>
+  </section>
 
-const GALLERY = [
-  { src: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=60", alt: "Pantai senja" },
-  { src: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=60", alt: "Paddle board" },
-  { src: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=60", alt: "Gelombang" },
-  { src: "https://images.unsplash.com/photo-1529694157871-0f0d2a89c6a8?auto=format&fit=crop&w=1200&q=60", alt: "Bar pantai" },
-];
-
-export default function SelarasSite() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-amber-50 text-slate-800">
-      {/* Nav */}
-      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/40 border-b border-slate-200/60">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <a href="#home" className="flex items-center gap-2 font-semibold">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-amber-200 shadow-sm"><Sun className="h-5 w-5"/></span>
-            <span>{SITE.name}</span>
-          </a>
-          <nav className="hidden md:flex gap-6 text-sm">
-            <a href="#home" className="hover:opacity-70">Beranda</a>
-            <a href="#about" className="hover:opacity-70">Tentang</a>
-            <a href="#activities" className="hover:opacity-70">Aktivitas</a>
-            <a href="#menu" className="hover:opacity-70">Menu</a>
-            <a href="#visit" className="hover:opacity-70">Kunjungi</a>
-            <a href="#contact" className="hover:opacity-70">Kontak</a>
-          </nav>
-          <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={() => setMenuOpen(true)} aria-label="Open menu">
-              <Menu className="h-5 w-5"/>
-            </Button>
-          </div>
-        </div>
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden">
-            <div className="fixed inset-0 bg-black/40" onClick={() => setMenuOpen(false)} />
-            <div className="fixed right-0 top-0 h-full w-72 bg-white shadow-2xl p-5 flex flex-col gap-4">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">Menu</span>
-                <Button variant="ghost" size="icon" onClick={() => setMenuOpen(false)} aria-label="Close menu">
-                  <X className="h-5 w-5"/>
-                </Button>
-              </div>
-              {["Beranda","Tentang","Aktivitas","Menu","Kunjungi","Kontak"].map((label, i) => (
-                <a key={i} href={["#home","#about","#activities","#menu","#visit","#contact"][i]} onClick={() => setMenuOpen(false)} className="py-2 border-b border-slate-100">
-                  {label}
-                </a>
-              ))}
-              <a href={SITE.whatsapp} className="mt-4">
-                <Button className="w-full">Reservasi via WhatsApp</Button>
-              </a>
-            </div>
-          </div>
-        )}
-      </header>
-
-      {/* Hero */}
-      <section id="home" className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(125,211,252,.35),transparent_60%)]"/>
-          <div className="absolute -bottom-20 inset-x-0 h-64 bg-gradient-to-t from-amber-100 to-transparent"/>
-          {/* Decorative waves */}
-          <svg className="absolute bottom-0 left-0 right-0" viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 120L60 110C120 100 240 80 360 80C480 80 600 100 720 120C840 140 960 160 1080 160C1200 160 1320 140 1380 130L1440 120V180H0V120Z" fill="#fde68a" opacity="0.5"/>
-            <path d="M0 140L60 130C120 120 240 100 360 100C480 100 600 120 720 140C840 160 960 180 1080 180C1200 180 1320 160 1380 150L1440 140V180H0V140Z" fill="#a5f3fc" opacity="0.6"/>
-          </svg>
-        </div>
-
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
-          <motion.h1 initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true}} transition={{duration:.6}} className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            {SITE.name}
-          </motion.h1>
-          <motion.p initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} transition={{delay:.1, duration:.6}} className="mt-4 max-w-2xl text-lg text-slate-700">
-            {SITE.tagline}
-          </motion.p>
-          <motion.div initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} transition={{delay:.2, duration:.6}} className="mt-6 flex flex-wrap items-center gap-3">
-            <a href={SITE.whatsapp}><Button size="lg" className="rounded-2xl">Pesan Tempat</Button></a>
-            <a href="#menu"><Button variant="outline" size="lg" className="rounded-2xl">Lihat Menu</Button></a>
-          </motion.div>
-          <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{delay:.3}} className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[Leaf, Waves, Sun].map((Icon, i) => (
-              <Card key={i} className="rounded-2xl">
-                <CardHeader className="pb-2">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <Icon className="h-5 w-5"/> Highlight #{i+1}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0 text-sm text-slate-600">
-                  {i===0 && "Bahan lokal & ramah lingkungan."}
-                  {i===1 && "Pantai bersih, ombak ramah untuk santai."}
-                  {i===2 && "Golden hour terbaik untuk foto."}
-                </CardContent>
-              </Card>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid md:grid-cols-5 gap-8 items-center">
-          <div className="md:col-span-3">
-            <h2 className="text-2xl font-bold">Tentang {SITE.name}</h2>
-            <p className="mt-3 text-slate-700 leading-relaxed">{SITE.description}</p>
-            <ul className="mt-4 text-slate-700 text-sm grid sm:grid-cols-2 gap-2">
-              <li className="flex items-center gap-2"><Waves className="h-4 w-4"/> Stand Up Paddle siap untuk pemula</li>
-              <li className="flex items-center gap-2"><Coffee className="h-4 w-4"/> Mini bar: kopi, mocktail, snack</li>
-              <li className="flex items-center gap-2"><Wine className="h-4 w-4"/> Area nongkrong santai</li>
-              <li className="flex items-center gap-2"><Sun className="h-4 w-4"/> Sunset spot favorit</li>
-            </ul>
-            <div className="mt-6 flex gap-3">
-              <a href={SITE.instagram} target="_blank" rel="noreferrer">
-                <Button variant="outline" className="rounded-2xl"><Instagram className="h-4 w-4 mr-2"/> Ikuti IG</Button>
-              </a>
-              <a href={SITE.maps} target="_blank" rel="noreferrer">
-                <Button variant="secondary" className="rounded-2xl"><MapPin className="h-4 w-4 mr-2"/> Lihat Peta</Button>
-              </a>
-            </div>
-          </div>
-          <div className="md:col-span-2">
-            <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-200">
-              <img src={GALLERY[0].src} alt={GALLERY[0].alt} className="h-full w-full object-cover"/>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Activities */}
-      <section id="activities" className="bg-white/60 py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-bold">Aktivitas</h2>
-          <p className="mt-2 text-slate-700">Pilih cara favoritmu menikmati pantai.</p>
-          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {ACTIVITIES.map((a, idx) => (
-              <motion.div key={idx} initial={{opacity:0, y:16}} whileInView={{opacity:1, y:0}} viewport={{once:true}} transition={{duration:.4, delay: idx * 0.05}}>
-                <Card className="rounded-2xl h-full">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-lg"><a.icon className="h-5 w-5"/> {a.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-700 text-sm leading-relaxed">{a.text}</p>
-                    <a href={SITE.whatsapp} className="inline-block mt-4">
-                      <Button className="rounded-2xl" size="sm">{a.cta}</Button>
-                    </a>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Menu */}
-      <section id="menu" className="mx-auto max-w-6xl px-4 py-16">
-        <div className="flex items-end justify-between flex-wrap gap-3">
-          <div>
-            <h2 className="text-2xl font-bold">Menu Bar</h2>
-            <p className="mt-1 text-slate-700">Racikan tropis yang simple dan segar.</p>
-          </div>
-          <a href={SITE.whatsapp}><Button className="rounded-2xl"><Phone className="h-4 w-4 mr-2"/> Pesan Sekarang</Button></a>
-        </div>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {MENU.map((group, i) => (
-            <Card key={i} className="rounded-2xl">
-              <CardHeader>
-                <CardTitle>{group.cat}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {group.items.map((it, j) => (
-                    <li key={j} className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="font-medium">{it.name}</p>
-                        <p className="text-sm text-slate-600">{it.note}</p>
-                      </div>
-                      <span className="text-sm text-slate-500">—</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className="bg-white/60 py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-bold">Galeri</h2>
-          <div className="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {GALLERY.map((g, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden ring-1 ring-slate-200">
-                <img src={g.src} alt={g.alt} className="h-48 w-full object-cover"/>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Visit */}
-      <section id="visit" className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-2xl font-bold">Kunjungi Kami</h2>
-            <p className="mt-2 text-slate-700">Datang langsung atau reservasi dulu. Kami siap menemani sore santai kamu di tepi laut.</p>
-            <ul className="mt-4 space-y-2 text-sm text-slate-700">
-              {SITE.hours.map((h, i) => (
-                <li key={i} className="flex items-center gap-2"><Clock className="h-4 w-4"/> <span className="w-36 inline-block">{h.day}</span> {h.time}</li>
-              ))}
-            </ul>
-            <div className="mt-6 flex gap-3">
-              <a href={SITE.maps} target="_blank" rel="noreferrer"><Button className="rounded-2xl" variant="secondary"><MapPin className="h-4 w-4 mr-2"/> Buka Maps</Button></a>
-              <a href={SITE.whatsapp}><Button className="rounded-2xl"><Phone className="h-4 w-4 mr-2"/> WhatsApp</Button></a>
-            </div>
-          </div>
-          <div className="rounded-3xl overflow-hidden ring-1 ring-slate-200">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60" alt="Laut biru" className="w-full h-full object-cover"/>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact / Footer */}
-      <footer id="contact" className="bg-slate-900 text-slate-200">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <h3 className="text-xl font-semibold">{SITE.name}</h3>
-              <p className="mt-2 text-slate-300 max-w-md">{SITE.tagline}</p>
-              <div className="mt-4 flex gap-3">
-                <a href={SITE.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-slate-700 px-3 py-2 hover:bg-slate-800"><Instagram className="h-4 w-4"/> Instagram</a>
-                <a href={SITE.whatsapp} className="inline-flex items-center gap-2 rounded-2xl border border-slate-700 px-3 py-2 hover:bg-slate-800"><Phone className="h-4 w-4"/> WhatsApp</a>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold">Jam Buka</h4>
-              <ul className="mt-2 space-y-1 text-slate-300 text-sm">
-                {SITE.hours.map((h, i) => (<li key={i}>{h.day}: {h.time}</li>))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold">Lokasi</h4>
-              <p className="mt-2 text-slate-300 text-sm">Pulau Dabo Singkep<br/>Kepulauan Riau</p>
-              <a href={SITE.maps} target="_blank" rel="noreferrer" className="inline-block mt-3 text-sm underline">Lihat di Maps</a>
-            </div>
-          </div>
-          <div className="mt-10 border-t border-slate-800 pt-6 text-xs text-slate-400 flex items-center justify-between">
-            <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
-            <a href="#home" className="hover:opacity-80">Kembali ke atas ↑</a>
-          </div>
-        </div>
-      </footer>
+  <section id="services" class="services">
+    <h2>Layanan</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Bar Mini</h3>
+        <p>Nikmati minuman segar dengan suasana pantai yang tenang.</p>
+      </div>
+      <div class="service-card">
+        <h3>Paddle Board</h3>
+        <p>Rasakan kebebasan menjelajah laut dengan stand up paddle board kami.</p>
+      </div>
+      <div class="service-card">
+        <h3>Spot Nongkrong</h3>
+        <p>Tempat nyaman untuk bersantai, bercerita, atau berbagi karya.</p>
+      </div>
     </div>
-  );
-}
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Kontak</h2>
+    <p>📍 Pulau Dabo Singkep</p>
+    <p>📧 Email: selarasbeach@example.com</p>
+    <p>📱 Instagram: @selarasbeach</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Selaras Beach. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
