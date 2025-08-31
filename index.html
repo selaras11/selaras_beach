@@ -3,33 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SELARAS BEACH</title>
+  <title>Selaras Beach</title>
   <style>
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
       background-color: #f5f7fa;
-    }
-    header {
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&q=80&auto=format&fit=crop&w=1400') no-repeat center center/cover;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      color: white;
-    }
-    header h1 {
-      font-size: 3.5rem;
-      margin: 0;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 15px;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+      color: #333;
     }
     nav {
       background: rgba(0,0,0,0.6);
@@ -42,28 +22,47 @@
       gap: 30px;
       z-index: 10;
     }
-    nav a {
+    nav a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    nav a:hover { color: #ffd369; }
+
+    header {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') 
+                  no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+      position: relative;
     }
-    nav a:hover {
-      color: #ffd369;
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
     }
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
+    header h1, header p {
+      position: relative;
+      z-index: 2;
     }
-    section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2rem;
+    header h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
     }
-    .about, .services, .contact {
-      text-align: center;
+    header p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
     }
+
+    section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+    section h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -77,9 +76,39 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s;
     }
-    .service-card:hover {
-      transform: translateY(-8px);
+    .service-card:hover { transform: translateY(-8px); }
+
+    .reservation-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
     }
+    .reservation-box input, 
+    .reservation-box select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: #25d366;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .whatsapp-btn:hover { background: #1ebe57; }
+
     footer {
       background: #222;
       color: #ccc;
@@ -90,10 +119,10 @@
   </style>
 </head>
 <body>
-
   <nav>
     <a href="#about">Tentang</a>
     <a href="#services">Layanan</a>
+    <a href="#reservation">Reservasi</a>
     <a href="#contact">Kontak</a>
   </nav>
 
@@ -102,32 +131,37 @@
     <p>Tempat nongkrong santai, berkarya, bercerita & berbagi</p>
   </header>
 
-  <section id="about" class="about">
+  <section id="about">
     <h2>Tentang Kami</h2>
-    <p>Selaras Beach adalah ruang terbuka di tepi pantai untuk menikmati suasana santai, 
-    berkarya, bercerita, dan berbagi. Kami menghadirkan pengalaman unik dengan bar mini, 
-    stand up paddle board, dan spot nongkrong yang nyaman di tepi laut.</p>
+    <p>Selaras Beach adalah ruang terbuka di tepi pantai, tempat nongkrong santai, berkarya, bercerita, dan berbagi bersama komunitas. 
+    Dilengkapi dengan bar mini, stand-up paddle board, dan beberapa spot nyaman untuk menikmati suasana pantai.</p>
   </section>
 
-  <section id="services" class="services">
+  <section id="services">
     <h2>Layanan</h2>
     <div class="services-grid">
-      <div class="service-card">
-        <h3>Bar Mini</h3>
-        <p>Nikmati minuman segar dengan suasana pantai yang tenang.</p>
-      </div>
-      <div class="service-card">
-        <h3>Paddle Board</h3>
-        <p>Rasakan kebebasan menjelajah laut dengan stand up paddle board kami.</p>
-      </div>
-      <div class="service-card">
-        <h3>Spot Nongkrong</h3>
-        <p>Tempat nyaman untuk bersantai, bercerita, atau berbagi karya.</p>
-      </div>
+      <div class="service-card"><h3>Bar Mini</h3><p>Menyediakan minuman segar dan kopi pilihan.</p></div>
+      <div class="service-card"><h3>Paddle Board</h3><p>Rasakan serunya berdiri di atas ombak laut yang tenang.</p></div>
+      <div class="service-card"><h3>Spot Nongkrong</h3><p>Area santai dengan vibes tropis untuk hangout bersama teman.</p></div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
+  <section id="reservation">
+    <h2>Reservasi</h2>
+    <div class="reservation-box">
+      <p>Isi data reservasi singkat lalu klik tombol WhatsApp untuk konfirmasi.</p>
+      <input type="text" id="name" placeholder="Nama Anda">
+      <input type="date" id="date">
+      <select id="service">
+        <option value="Bar Mini">Bar Mini</option>
+        <option value="Paddle Board">Paddle Board</option>
+        <option value="Spot Nongkrong">Spot Nongkrong</option>
+      </select>
+      <a id="waLink" class="whatsapp-btn" target="_blank">Reservasi via WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="contact">
     <h2>Kontak</h2>
     <p>📍 Pulau Dabo Singkep</p>
     <p>📧 Email: selarasbeach@example.com</p>
@@ -138,6 +172,18 @@
     <p>© 2025 Selaras Beach. All Rights Reserved.</p>
   </footer>
 
+  <script>
+    document.getElementById("waLink").addEventListener("click", function(event){
+      let name = document.getElementById("name").value;
+      let date = document.getElementById("date").value;
+      let service = document.getElementById("service").value;
+
+      let message = `Halo, saya ingin reservasi di Selaras Beach.%0A%0A` +
+                    `Nama: ${name}%0ATanggal: ${date}%0ALayanan: ${service}`;
+
+      // Ganti dengan nomor WhatsApp kamu
+      this.href = `https://wa.me/6281234567890?text=${message}`;
+    });
+  </script>
 </body>
 </html>
-
