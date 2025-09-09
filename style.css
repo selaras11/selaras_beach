@@ -1,1 +1,29 @@
+/* Brand logo + text */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;            /* jarak antara logo dan teks */
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+}
 
+.brand img {
+  width: 34px;          /* ukuran logo */
+  height: 34px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+/* Responsive tweaks untuk layar kecil */
+@media (max-width: 480px) {
+  .brand {
+    gap: 6px;           /* jarak lebih kecil di HP */
+    font-size: 16px;    /* teks agak dikecilkan */
+  }
+  .brand img {
+    width: 30px;        /* logo diperkecil */
+    height: 30px;
+  }
+}
