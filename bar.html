@@ -56,6 +56,22 @@ header h2 {
     nav a:hover {
       background: #e86f00;
     }
+    .menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.menu-text {
+  flex: 1;
+}
+
+.menu-image img {
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
   </style>
 </head>
 <body>
@@ -64,24 +80,34 @@ header h2 {
 
   </header>
 
-  <main>
-    <h1>Bar & Minuman</h1>
-    <p>Nikmati minuman dingin, kopi, dan mocktail tropis yang pas untuk suasana pantai.</p>
+<main>
+  <div class="menu-container">
+    <div class="menu-text">
+      <h1>Bar & Minuman</h1>
+      <p>Nikmati minuman dingin, kopi, dan mocktail tropis yang pas untuk suasana pantai.</p>
 
-    <h3>Menu Favorit</h3>
-    <ul>
-      <li>Kopi & Es Kopi</li>
-      <li>Mocktail Tropis</li>
-      <li>Minuman Segar & Jus Buah</li>
-      <li>Camilan Ringan</li>
-    </ul>
+      <h3>Menu Favorit</h3>
+      <ul>
+        <li>Kopi & Es Kopi</li>
+        <li>Mocktail Tropis</li>
+        <li>Minuman Segar & Jus Buah</li>
+        <li>Camilan Ringan</li>
+      </ul>
+    </div>
 
-    <nav>
-      <a href="index.html">← Kembali ke Layanan</a>
-    </nav>
-  </main>
+    <div class="menu-image">
+      <img src="assets/minuman.png" alt="Minuman Segar">
+    </div>
+  </div>
+
+  <nav>
+    <a href="layanan.html">← Kembali ke Layanan</a>
+  </nav>
+</main>
+
 </body>
 </html>
+
 
 
 
