@@ -1,23 +1,161 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Spot Nongkrong & Event - Selaras Beach</title>
+  <title>Spot Nongkrong - Selaras Beach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fde2e4, #f9bec7); /* pink pastel */
+      color: #333;
+    }
+    header {
+      background: #f06292; /* pink lebih tegas */
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    header img {
+      height: 60px;
+      margin-bottom: 8px;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+    h1 {
+      color: #e91e63;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 12px;
+    }
+    .close, .prev, .next {
+      position: absolute;
+      color: white;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .close { top: 20px; right: 30px; }
+    .prev { top: 50%; left: 30px; transform: translateY(-50%); }
+    .next { top: 50%; right: 30px; transform: translateY(-50%); }
+    .close:hover, .prev:hover, .next:hover {
+      color: #f48fb1;
+    }
+    nav {
+      margin-top: 30px;
+      text-align: center;
+    }
+    nav a {
+      text-decoration: none;
+      background: #e91e63;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #ad1457;
+    }
+  </style>
 </head>
 <body>
-  <h1>Spot Nongkrong & Event</h1>
-  <p>Area santai untuk bersosialisasi, menikmati minuman, atau mengadakan acara kecil.</p>
+  <header>
+    <img src="assets/logo1.png" alt="Logo Selaras Beach">
+    <h2>Selaras Beach</h2>
+  </header>
 
-  <h3>Fasilitas:</h3>
-  <ul>
-    <li>Tempat duduk dengan payung pantai</li>
-    <li>Pemandangan sunset langsung di depan mata</li>
-    <li>Bisa untuk acara privat & gathering kecil</li>
-    <li>Menu minuman & snack tersedia</li>
-  </ul>
+  <main>
+    <h1>Spot Nongkrong</h1>
+    <div class="gallery">
+      <img src="assets/spot1.jpg" alt="Spot 1">
+      <img src="assets/spot2.jpg" alt="Spot 2">
+      <img src="assets/spot3.jpg" alt="Spot 3">
+      <img src="assets/spot4.jpg" alt="Spot 4">
+    </div>
 
-  <nav>
-    <a href="index.html">← Kembali ke Layanan</a>
-  </nav>
+    <nav>
+      <a href="index.html">← Kembali ke beranda</a>
+    </nav>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+    <img id="lightbox-img" src="">
+    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+  </div>
+
+  <script>
+    const gallery = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    let currentIndex = 0;
+
+    gallery.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        currentIndex = index;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    function changeSlide(direction) {
+      currentIndex = (currentIndex + direction + gallery.length) % gallery.length;
+      lightboxImg.src = gallery[currentIndex].src;
+    }
+  </script>
 </body>
 </html>
