@@ -1,23 +1,114 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Stand Up Paddle Board - Selaras Beach</title>
+  <title>Stand Up Paddleboard - Selaras Beach</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e0f7fa, #b3e5fc); /* biru muda */
+      color: #333;
+    }
+    header {
+      background: #03a9f4; /* biru cerah */
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    header img {
+      height: 70px;
+      margin-bottom: 8px;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #0288d1;
+    }
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .content img {
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex: 1;
+    }
+    .description {
+      flex: 1;
+      min-width: 250px;
+    }
+    .harga {
+      background: #e1f5fe;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+      border: 1px solid #81d4fa;
+    }
+    .harga h3 {
+      margin-top: 0;
+      color: #0277bd;
+    }
+    nav {
+      margin-top: 30px;
+      text-align: center;
+    }
+    nav a {
+      text-decoration: none;
+      background: #0288d1;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #01579b;
+    }
+  </style>
 </head>
 <body>
-  <h1>Stand Up Paddle Board</h1>
-  <p>Sewa papan dayung 60–90 menit. Cocok untuk pemula maupun yang sudah berpengalaman.</p>
+  <header>
+    <img src="assets/logo1.png" alt="Logo Selaras Beach">
+    <h2>Selaras Beach</h2>
+  </header>
 
-  <h3>Informasi:</h3>
-  <ul>
-    <li>Tersedia pelampung untuk keamanan</li>
-    <li>Briefing singkat sebelum mulai</li>
-    <li>Lokasi langsung di pantai Selaras</li>
-    <li>Instruktur ramah siap membantu</li>
-  </ul>
+  <main>
+    <h1>Stand Up Paddleboard</h1>
+    <div class="content">
+      <img src="assets/sup4.jpg" alt="Paddleboard di pantai">
+      <div class="description">
+        <p>
+          Nikmati pengalaman seru bermain Stand Up Paddleboard di Selaras Beach. 
+          Cocok untuk pemula maupun yang sudah berpengalaman, dengan pemandangan tropis yang indah.
+        </p>
+        <div class="harga">
+          <h3>Harga Sewa</h3>
+          <ul>
+            <li>30 Menit: Rp 50.000</li>
+            <li>1 Jam: Rp 90.000</li>
+            <li>2 Jam: Rp 150.000</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-  <nav>
-    <a href="index.html">← Kembali ke Layanan</a>
-  </nav>
+    <nav>
+      <a href="index.html">← Kembali ke beranda</a>
+    </nav>
+  </main>
 </body>
 </html>
