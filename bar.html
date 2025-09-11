@@ -13,15 +13,27 @@
       color: #374151;
     }
 
+    /* Header dengan background image */
     header {
-      background: #f97316;
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      background: url("assets/bar-header.jpg") center/cover no-repeat;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35); /* overlay gelap biar logo kontras */
+    }
+
+    header img {
+      height: 80px;
+      position: relative;
+      z-index: 1;
     }
 
     .container {
@@ -71,11 +83,19 @@
     }
 
     .menu ul {
-      padding-left: 20px;
+      padding-left: 0;
+      list-style: none;
     }
 
     .menu ul li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu ul li span {
+      margin-right: 8px;
+      font-size: 18px;
     }
 
     .quote-box {
@@ -116,29 +136,31 @@
 </head>
 <body>
 
-  <header>Selaras Bar</header>
+  <header>
+    <!-- Logo Selaras -->
+    <img src="assets/logo-bar.png" alt="Logo Selaras Bar">
+  </header>
 
   <div class="container">
-
     <!-- Foto + Deskripsi -->
     <div class="card">
       <img src="assets/BAR.PNG" alt="Selaras Bar" />
       <div class="content">
         <h2>Selaras Bar</h2>
         <p>
-          Selain minuman segar, Selaras Bar juga menyediakan fasilitas sederhana untuk menambah kenyamanan Anda. 
-          Tersedia colokan listrik untuk mengecas HP dan beberapa buku bacaan ringan yang bisa dinikmati sambil bersantai. 
-          Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
+          ⚡ Tersedia colokan listrik untuk mengecas HP.<br>
+          📖 Beberapa buku bacaan ringan bisa dinikmati sambil bersantai.<br>
+          🤝 Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
         </p>
 
         <!-- Menu -->
         <div class="menu">
           <h3>Menu Selaras</h3>
           <ul>
-            <li>Kopi & Es Kopi</li>
-            <li>Squash Drink</li>
-            <li>Minuman Segar & Jus Buah</li>
-            <li>Camilan Ringan</li>
+            <li><span>☕</span> Kopi & Es Kopi</li>
+            <li><span>🥤</span> Squash Drink</li>
+            <li><span>🍹</span> Minuman Segar & Jus Buah</li>
+            <li><span>🍪</span> Camilan Ringan</li>
           </ul>
         </div>
 
