@@ -2,266 +2,160 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Bar & Minuman - Selaras Beach</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selaras Bar</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #fdfcfb, #e2d1c3);
-      color: #333;
+      background: #f7fafc;
+      color: #374151;
     }
-    header {
-  background: #ff914d;
-  color: white;
-  padding: 16px;
-  text-align: center;
-}
-header img {
-  height: 110px;   /* ukuran lebih besar */
-  margin-bottom: 6px; /* jarak dengan teks */
-}
-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-}
 
-    main {
-      max-width: 800px;
-      margin: 40px auto;
+    header {
+      background: #f97316;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
       padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    h1 {
-      color: #ff914d;
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+      margin-bottom: 30px;
     }
-    ul {
+
+    .card img {
+      width: 100%;
+      border-bottom: 3px solid #f97316;
+    }
+
+    .content {
+      padding: 20px 24px;
+    }
+
+    .content h2 {
+      text-align: center;
+      color: #f97316;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .content p {
+      margin: 0 0 14px;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .menu {
+      margin-top: 24px;
+    }
+
+    .menu h3 {
+      color: #f97316;
+      margin-bottom: 10px;
+    }
+
+    .menu ul {
       padding-left: 20px;
     }
-    nav {
-      margin-top: 30px;
-      text-align: center;
+
+    .menu ul li {
+      margin-bottom: 6px;
     }
-    nav a {
-      text-decoration: none;
-      background: #ff914d;
-      color: white;
-      padding: 10px 16px;
+
+    .quote-box {
+      margin-top: 26px;
+      padding: 18px 22px;
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
       border-radius: 8px;
-      font-weight: bold;
+      font-style: italic;
+      text-align: center;
+      font-size: 15px;
+      color: #374151;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 22px;
+      background: #f97316;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
       transition: background 0.3s;
     }
-    nav a:hover {
-      background: #e86f00;
+
+    .back-btn:hover {
+      background: #ea580c;
     }
-    .menu-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
 
-.menu-text {
-  flex: 1;
-}
-
-.menu-image img {
-  max-width: 300px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-  </style><!-- ===== CSS Tambahan ===== -->
-<style>
-  .quote-box {
-    margin-top: 24px;
-    padding: 16px 20px;
-    background: #fff7ed; /* krem lembut */
-    border-left: 4px solid #f97316; /* garis aksen oranye */
-    border-radius: 8px;
-    text-align: center;
-    font-style: italic;
-    color: #374151; /* abu gelap elegan */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .quote-box p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-</style>
-  <style>
-  .bar-desc {
-    margin: 20px 0;
-    padding: 20px;
-    background: #f0fdf4; /* hijau tropis lembut */
-    border: 1px solid #bbf7d0; 
-    border-radius: 12px;
-    color: #065f46; /* hijau tua */
-    font-size: 15px;
-    line-height: 1.7;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  }
-
-  .bar-title {
-    font-size: 20px;
-    font-weight: 700;
-    text-align: center;
-    color: #f97316; /* oranye hangat */
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-  }
-
-  /* Hiasan garis di kiri-kanan judul */
-  .bar-title::before,
-  .bar-title::after {
-    content: "☀";
-    color: #fbbf24; /* kuning matahari */
-    font-size: 14px;
-    margin: 0 8px;
-  }
-
-  .menu {
-    margin-top: 28px;
-  }
-
-  .menu h4 {
-    color: #f97316;
-    margin-bottom: 8px;
-  }
-
-  .menu ul {
-    padding-left: 18px;
-  }
-
-  .quote-box {
-    margin-top: 24px;
-    padding: 16px 20px;
-    background: #fff7ed;
-    border-left: 4px solid #f97316; 
-    border-radius: 8px;
-    text-align: center;
-    font-style: italic;
-    color: #374151;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .quote-box p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-    .bar-card {
-  margin: 20px 0;
-  padding: 24px;
-  background: #fdfdfd;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  color: #374151;
-  line-height: 1.7;
-}
-
-.bar-card h3 {
-  text-align: center;
-  color: #f97316;
-  font-size: 20px;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.bar-card h3::before,
-.bar-card h3::after {
-  content: "☀";
-  color: #fbbf24;
-  margin: 0 6px;
-}
-
-.bar-card h4 {
-  margin-top: 20px;
-  margin-bottom: 8px;
-  color: #f97316;
-}
-
-.bar-card ul {
-  padding-left: 20px;
-}
-
-.quote-box {
-  margin-top: 20px;
-  padding: 14px 20px;
-  background: #fff7ed;
-  border-left: 4px solid #f97316;
-  border-radius: 8px;
-  font-style: italic;
-  text-align: center;
-  color: #374151;
-}
-
-</style>
-
-
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="assets/logo1.png" alt="Logo Selaras Beach">
 
-  </header>
+  <header>Selaras Bar</header>
 
-<main>
-  <div class="bar-desc">
-  <h3 class="bar-title">SELARAS BAR</h3>
-  <p>
-    Selain minuman segar, Selaras Bar juga menyediakan fasilitas sederhana untuk menambah kenyamanan Anda. 
-    Tersedia colokan listrik untuk mengecas HP dan beberapa buku bacaan ringan yang bisa dinikmati sambil bersantai. 
-    Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
-  </p>
-</div>
-  <div class="menu-container">
-    <!-- ===== Bagian Selaras Menu ===== -->
-<div class="menu">
-  <h4>selaras menu</h4>
-  <ul>
-    <li>Kopi & Es Kopi</li>
-    <li>Squash Drink</li>
-    <li>Minuman Segar & Jus Buah</li>
-    <li>Camilan Ringan</li>
-  </ul>
+  <div class="container">
 
-  <!-- ===== Kutipan Inspiratif ===== -->
-  <div class="quote-box">
-    <p>“Here, we believe that every sip of coffee is a little prayer for a brighter day.”</p>
-  </div>
-</div>
+    <!-- Foto + Deskripsi -->
+    <div class="card">
+      <img src="assets/BAR.PNG" alt="Selaras Bar" />
+      <div class="content">
+        <h2>Selaras Bar</h2>
+        <p>
+          Selain minuman segar, Selaras Bar juga menyediakan fasilitas sederhana untuk menambah kenyamanan Anda. 
+          Tersedia colokan listrik untuk mengecas HP dan beberapa buku bacaan ringan yang bisa dinikmati sambil bersantai. 
+          Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
+        </p>
 
+        <!-- Menu -->
+        <div class="menu">
+          <h3>Menu Selaras</h3>
+          <ul>
+            <li>Kopi & Es Kopi</li>
+            <li>Squash Drink</li>
+            <li>Minuman Segar & Jus Buah</li>
+            <li>Camilan Ringan</li>
+          </ul>
+        </div>
 
-    <div class="menu-image">
-      <img src="assets/bar2.jpeg" alt="Minuman Segar">
+        <!-- Quote -->
+        <div class="quote-box">
+          “Here, we believe that every sip of coffee is a little prayer for a brighter day.”
+        </div>
+
+        <!-- Back button -->
+        <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
+      </div>
     </div>
   </div>
 
-  <nav>
-    <a href="index.html">← Kembali ke beranda</a>
-  </nav>
-</main>
+  <footer>
+    © 2025 Selaras Beach. All rights reserved.
+  </footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
