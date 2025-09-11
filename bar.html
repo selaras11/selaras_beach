@@ -20,7 +20,7 @@
     }
 
     header img {
-      max-height: 80px;
+      max-height: 90px;
     }
 
     .container {
@@ -29,72 +29,85 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      padding: 30px;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #f97316;
+      margin-bottom: 20px;
+      font-size: 32px;
+      text-align: center;
+    }
+
+    .description {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .description strong {
+      color: #f97316;
     }
 
     .content {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 30px;
+      align-items: flex-start;
     }
 
-    .content img {
-      flex: 1 1 28%;
-      max-width: 55%;
-      border-radius: 12px;
-      object-fit: cover;
+    .menu {
+      flex: 1 1 45%;
     }
 
-    .text {
-      flex: 1 1 55%;
-    }
-
-    h1 {
-      color: #f97316;
-      margin-bottom: 16px;
-      font-size: 28px;
-    }
-
-    p {
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    h3 {
-      margin-top: 20px;
-      margin-bottom: 10px;
+    .menu h3 {
+      margin-bottom: 12px;
       color: #f97316;
     }
 
-    ul {
-      margin: 0;
+    .menu ul {
       padding-left: 20px;
     }
 
-    ul li {
-      margin-bottom: 8px;
-      list-style: none;
+    .menu ul li {
+      margin-bottom: 10px;
       font-size: 16px;
+      list-style: none;
     }
 
-    ul li::before {
+    .menu ul li::before {
       content: "✔ ";
       color: #f97316;
       font-weight: bold;
     }
 
+    .menu ul li span {
+      margin-left: 6px;
+    }
+
+    .menu ul li .icon {
+      font-size: 18px;
+    }
+
+    .content img {
+      flex: 1 1 45%;
+      max-width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
     .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 18px;
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 24px;
       background: #f97316;
       color: #fff;
       text-decoration: none;
       border-radius: 6px;
       font-weight: bold;
       transition: background 0.3s ease;
+      text-align: center;
+      max-width: 220px;
     }
 
     .btn:hover {
@@ -105,12 +118,6 @@
       .content {
         flex-direction: column;
       }
-      .content img {
-        flex: 1 1 100%;
-      }
-      .text {
-        flex: 1 1 100%;
-      }
     }
   </style>
 </head>
@@ -119,33 +126,39 @@
     <img src="assets/logo.png" alt="Logo Selaras">
   </header>
 
- 
-      <div class="text">
-        <h1>SELARAS BAR</h1>
-        <p>
-          Selain minuman segar, Selaras Bar juga menyediakan fasilitas sederhana untuk menambah kenyamanan Anda. 
-          ⚡ Tersedia colokan listrik untuk mengecas HP.<br>
-          📖 Beberapa buku bacaan ringan bisa dinikmati sambil bersantai.<br>
-          🤝 Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
-        </p> <div class="container">
+  <div class="container">
+    <h1>SELARAS BAR</h1>
+    <div class="description">
+      <p>
+        Selain minuman segar, Selaras Bar juga menyediakan fasilitas sederhana untuk menambah kenyamanan Anda.  
+        Tersedia ⚡ <strong>colokan listrik</strong> untuk mengecas HP dan beberapa 📖 <strong>buku bacaan ringan</strong> yang bisa dinikmati sambil bersantai.  
+        Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
+      </p>
+      <p><strong>Jam Operasional:</strong> 10:00 Pagi – 08:00 Malam</p>
+    </div>
+
     <div class="content">
-      <img src="assets/bar2.jpeg" alt="Selaras Bar">
-        
+      <div class="menu">
         <h3>Selaras Menu</h3>
         <ul>
-          <li>☕ Kopi & Es Kopi</li>
-          <li>🍹 Squash Drink</li>
-          <li>🥤 Minuman Segar & Jus Buah</li>
-          <li>🍪 Camilan Ringan</li>
+          <li><span class="icon">☕</span><span>Kopi & Es Kopi</span></li>
+          <li><span class="icon">🍹</span><span>Squash Drink</span></li>
+          <li><span class="icon">🥤</span><span>Minuman Segar & Jus Buah</span></li>
+          <li><span class="icon">🍪</span><span>Camilan Ringan</span></li>
         </ul>
 
-      
-
-        <a href="index.html" class="btn">← Kembali ke Beranda</a>
+        <h3>Fasilitas</h3>
+        <ul>
+          <li><span class="icon">⚡</span><span>Colokan Listrik</span></li>
+          <li><span class="icon">📖</span><span>Buku Bacaan Ringan</span></li>
+          <li><span class="icon">🌊</span><span>Spot Nongkrong dengan Pemandangan Laut</span></li>
+        </ul>
       </div>
+
+      <img src="assets/bar2.jpeg" alt="Foto Selaras Bar">
     </div>
+
+    <a href="index.html" class="btn">← Kembali ke Beranda</a>
   </div>
 </body>
 </html>
-
-
