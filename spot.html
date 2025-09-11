@@ -18,62 +18,89 @@
       font-family: 'Poppins', sans-serif;
       background: var(--light);
       color: var(--dark);
+      line-height: 1.6;
     }
 
-    header {
-      background: var(--primary);
+    /* Hero */
+    .hero {
+      position: relative;
+      background: url("assets/spot1.jpg") center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: white;
       text-align: center;
-      padding: 2rem 1rem;
     }
 
-    header h1 {
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
       margin: 0;
-      font-size: 2rem;
     }
 
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1rem;
-      opacity: 0.9;
+    .hero p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
     }
 
+    /* Container */
     .container {
       max-width: 1200px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
+    /* Card */
     .card {
       background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       margin-bottom: 2rem;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
 
     .card h2 {
       margin-top: 0;
       color: var(--primary);
+      font-size: 1.6rem;
     }
 
     /* Galeri */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 16px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
     /* Lightbox */
@@ -81,78 +108,84 @@
       display: none;
       position: fixed;
       z-index: 9999;
-      padding: 1rem;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.9);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
 
     .lightbox img {
-      display: block;
       max-width: 90%;
       max-height: 80%;
-      margin: 5% auto;
       border-radius: 12px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    .close, .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.5rem 1rem;
     }
 
     .close {
-      position: absolute;
-      top: 20px;
-      right: 35px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
+      top: 30px;
+      right: 40px;
+      font-size: 3rem;
+      transform: none;
     }
 
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -50px;
-      color: white;
-      font-weight: bold;
-      font-size: 30px;
-      user-select: none;
-    }
+    .prev { left: 20px; }
+    .next { right: 20px; }
 
-    .prev { left: 0; }
-    .next { right: 0; }
-
+    /* Tombol kembali */
     .btn-back {
       display: inline-block;
-      margin: 2rem auto 0;
+      margin: 3rem auto 1rem;
       text-decoration: none;
       background: var(--secondary);
       color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
+      padding: 0.9rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
       transition: 0.3s;
     }
 
     .btn-back:hover {
       background: #0877b5;
+      transform: translateY(-2px);
     }
 
     @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
+      .hero h1 { font-size: 2rem; }
+      .gallery { gap: 1rem; }
+      .close { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Spot Nongkrong</h1>
-    <p>Tempat nyaman untuk bersantai di Selaras Beach</p>
-  </header>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Spot Nongkrong</h1>
+      <p>Tempat santai dengan suasana tropis di Selaras Beach</p>
+    </div>
+  </section>
 
   <div class="container">
 
@@ -160,9 +193,10 @@
     <div class="card">
       <h2>Tentang Spot Nongkrong</h2>
       <p>
-        Di Selaras Beach, kami menyediakan berbagai spot nongkrong dengan suasana tropis yang hangat. 
-        Anda bisa duduk santai bersama teman atau keluarga, menikmati minuman segar dari Selaras Bar, 
-        sambil memandang laut biru yang tenang. Spot ini dirancang agar nyaman baik siang maupun malam hari.
+        Nikmati suasana hangat di berbagai spot nongkrong Selaras Beach. 
+        Mulai dari hammock di bawah pohon kelapa, bean bag di tepi pantai, hingga meja kayu klasik 
+        dengan pemandangan laut. Semua dirancang untuk memberi kenyamanan sambil menikmati 
+        minuman segar dari Selaras Bar.
       </p>
     </div>
 
@@ -170,11 +204,11 @@
     <div class="card">
       <h2>Galeri Spot Nongkrong</h2>
       <div class="gallery">
-        <img src="assets/spot1.jpg" alt="Spot Nongkrong 1" onclick="openLightbox(0)">
-        <img src="assets/spot2.jpg" alt="Spot Nongkrong 2" onclick="openLightbox(1)">
-        <img src="assets/spot3.jpg" alt="Spot Nongkrong 3" onclick="openLightbox(2)">
-        <img src="assets/spot4.jpg" alt="Spot Nongkrong 4" onclick="openLightbox(3)">
-        <img src="assets/spot5.jpg" alt="Spot Nongkrong 5" onclick="openLightbox(4)">
+        <img src="assets/gambar5.jpeg" alt="Sunset Spot" onclick="openLightbox(0)">
+        <img src="assets/spot1.jpeg" alt="Hammock Corner" onclick="openLightbox(1)">
+        <img src="assets/spot2.jpeg" alt="Bean Bag View" onclick="openLightbox(2)">
+        <img src="assets/gambar8.jpeg" alt="Table by the Sea" onclick="openLightbox(3)">
+        <img src="assets/gambar5.jpeg" alt="Night Chill" onclick="openLightbox(4)">
       </div>
     </div>
 
@@ -185,23 +219,25 @@
   </div>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
+  <div id="lightbox" class="lightbox" style="display:none;">
     <span class="close" onclick="closeLightbox()">&times;</span>
     <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
     <span class="next" onclick="changeSlide(1)">&#10095;</span>
-    <img id="lightbox-img" src="">
+    <img id="lightbox-img" src="" alt="">
+    <p id="caption" style="color:white; margin-top:1rem; font-size:1.1rem;"></p>
   </div>
 
   <script>
     const images = document.querySelectorAll('.gallery img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.getElementById('caption');
     let currentIndex = 0;
 
     function openLightbox(index) {
       currentIndex = index;
-      lightbox.style.display = "block";
-      lightboxImg.src = images[currentIndex].src;
+      lightbox.style.display = "flex";
+      updateLightbox();
     }
 
     function closeLightbox() {
@@ -212,11 +248,16 @@
       currentIndex += direction;
       if (currentIndex < 0) currentIndex = images.length - 1;
       if (currentIndex >= images.length) currentIndex = 0;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
       lightboxImg.src = images[currentIndex].src;
+      caption.textContent = images[currentIndex].alt;
     }
 
     document.addEventListener("keydown", (e) => {
-      if (lightbox.style.display === "block") {
+      if (lightbox.style.display === "flex") {
         if (e.key === "ArrowLeft") changeSlide(-1);
         if (e.key === "ArrowRight") changeSlide(1);
         if (e.key === "Escape") closeLightbox();
