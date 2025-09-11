@@ -72,7 +72,28 @@ header h2 {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-  </style>
+  </style><!-- ===== CSS Tambahan ===== -->
+<style>
+  .quote-box {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: #fff7ed; /* krem lembut */
+    border-left: 4px solid #f97316; /* garis aksen oranye */
+    border-radius: 8px;
+    text-align: center;
+    font-style: italic;
+    color: #374151; /* abu gelap elegan */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .quote-box p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+</style>
+
+
 </head>
 <body>
   <header>
@@ -82,18 +103,22 @@ header h2 {
 
 <main>
   <div class="menu-container">
-    <div class="menu-text">
-      <h1>SELARAS BAR</h1>
-      <p>Selain minuman segar, Selaras Bar juga menyediakan fasilitas sederhana untuk menambah kenyamanan Anda. Tersedia colokan listrik untuk mengecas HP dan beberapa buku bacaan ringan yang bisa dinikmati sambil bersantai. Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.</p>
+    <!-- ===== Bagian Selaras Menu ===== -->
+<div class="menu">
+  <h4>selaras menu</h4>
+  <ul>
+    <li>Kopi & Es Kopi</li>
+    <li>Squash Drink</li>
+    <li>Minuman Segar & Jus Buah</li>
+    <li>Camilan Ringan</li>
+  </ul>
 
-      <h3>selaras menu</h3>
-      <ul>
-        <li>Kopi & Es Kopi</li>
-        <li>Squash Drink</li>
-        <li>Minuman Segar & Jus Buah</li>
-        <li>Camilan Ringan</li>
-      </ul>
-    </div>
+  <!-- ===== Kutipan Inspiratif ===== -->
+  <div class="quote-box">
+    <p>“Here, we believe that every sip of coffee is a little prayer for a brighter day.”</p>
+  </div>
+</div>
+
 
     <div class="menu-image">
       <img src="assets/bar2.jpeg" alt="Minuman Segar">
@@ -107,6 +132,7 @@ header h2 {
 
 </body>
 </html>
+
 
 
 
