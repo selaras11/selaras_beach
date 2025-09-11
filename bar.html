@@ -1,115 +1,173 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>BAR - Selaras Beach</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selaras Bar</title>
   <style>
+    :root {
+      --primary: #1f8a70;
+      --secondary: #0ea5e9;
+      --light: #f9fafb;
+      --dark: #0c2231;
+      --muted: #6c7a86;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #e0f7fa, #b3e5fc); /* biru muda */
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
     }
+
     header {
-      background: #03a9f4; /* biru cerah */
+      background: var(--secondary);
       color: white;
-      padding: 16px;
       text-align: center;
+      padding: 2rem 1rem;
     }
-    header img {
-      height: 70px;
-      margin-bottom: 8px;
-    }
-    header h2 {
+
+    header h1 {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .bar-img {
+      border-radius: 16px;
+      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    h1 {
-      color: #0288d1;
+
+    .bar-img img {
+      width: 100%;
+      display: block;
     }
-    .content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
     }
-    .content img {
-      max-width: 400px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      flex: 1;
-    }
-    .description {
-      flex: 1;
-      min-width: 250px;
-    }
-    .harga {
-      background: #e1f5fe;
-      padding: 16px;
-      border-radius: 8px;
-      margin-top: 20px;
-      border: 1px solid #81d4fa;
-    }
-    .harga h3 {
+
+    .card h2 {
       margin-top: 0;
-      color: #0277bd;
+      font-size: 1.4rem;
+      color: var(--primary);
     }
-    nav {
-      margin-top: 30px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hours {
       text-align: center;
-    }
-    nav a {
-      text-decoration: none;
-      background: #0288d1;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
       font-weight: bold;
-      transition: background 0.3s;
+      font-size: 1.1rem;
+      padding: 1rem;
+      background: var(--secondary);
+      color: white;
+      border-radius: 12px;
     }
-    nav a:hover {
-      background: #01579b;
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background: #166b56;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <img src="assets/logo1.png" alt="Logo Selaras Beach">
-    <h2>Selaras Beach</h2>
+    <h1>Selaras Bar</h1>
+    <p>Nikmati minuman segar & suasana tropis di tepi pantai</p>
   </header>
 
-  <main>
-    <h1>SELARAS BAR</h1>
-    <div class="content">
-      <img src="assets/bar2.jpeg" alt="Paddleboard di pantai">
-      <div class="description">
-        <p>
-        
-        </p>
-        <div class="harga">
-          <h3>Selaras Menu</h3>
-          <ul>
-            <li>Selain minuman segar, Selaras Bar juga menyediakan fasilitas sederhana untuk menambah kenyamanan Anda. Tersedia ⚡ colokan listrik untuk mengecas HP dan beberapa 📖 buku bacaan ringan yang bisa dinikmati sambil bersantai. Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
+  <div class="container">
+    <div class="grid">
+      <!-- Foto Bar -->
+      <div class="bar-img">
+        <img src="assets/bar2.png" alt="Bar di pantai Selaras">
+      </div>
 
-Jam Operasional: 10:00 Pagi – 08:00 Malams.</li>
-            <li></li>
+      <!-- Deskripsi & Info -->
+      <div>
+        <div class="card">
+          <h2>Fasilitas</h2>
+          <ul>
+            <li>⚡ Colokan listrik untuk mengisi daya</li>
+            <li>📚 Buku bacaan ringan untuk bersantai</li>
+            <li>🌴 Suasana santai di tepi pantai</li>
+            <li>🤝 Terbuka untuk sumbangan buku</li>
           </ul>
+        </div>
+
+        <div class="card">
+          <h2>Menu Minuman</h2>
+          <ul>
+            <li>🥥 Es Kelapa Muda – Rp 15.000</li>
+            <li>☕ Kopi Hitam – Rp 12.000</li>
+            <li>🍹 Mocktail Tropis – Rp 25.000</li>
+            <li>🍵 Teh Herbal Dingin – Rp 18.000</li>
+          </ul>
+        </div>
+
+        <div class="hours">
+          🕒 Jam Operasional: 10:00 Pagi – 08:00 Malam
         </div>
       </div>
     </div>
 
-    <nav>
-      <a href="index.html">← Kembali ke beranda</a>
-    </nav>
-  </main>
+    <div style="text-align:center;">
+      <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+    </div>
+  </div>
+
 </body>
 </html>
-
