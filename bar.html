@@ -15,7 +15,7 @@
 
     /* Header dengan background image */
     header {
-      background: url("assets/sup3.jpg") center/cover no-repeat;
+      background: url("assets/bar-header.jpg") center/cover no-repeat;
       height: 200px;
       display: flex;
       align-items: center;
@@ -37,30 +37,44 @@
     }
 
     .container {
-      max-width: 900px;
-      margin: 30px auto;
+      max-width: 1100px;
+      margin: 40px auto;
       padding: 20px;
     }
 
     .card {
       background: #ffffff;
       border-radius: 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
       overflow: hidden;
       margin-bottom: 30px;
+      padding: 20px;
     }
 
-    .card img {
+    /* Layout dua kolom */
+    .two-column {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .two-column .image-side {
+      flex: 1 1 40%;
+    }
+
+    .two-column .image-side img {
       width: 100%;
-      border-bottom: 3px solid #f97316;
+      height: 100%;
+      border-radius: 12px;
+      object-fit: cover;
     }
 
-    .content {
-      padding: 20px 24px;
+    .two-column .content {
+      flex: 1 1 60%;
     }
 
     .content h2 {
-      text-align: center;
       color: #f97316;
       margin-bottom: 16px;
       text-transform: uppercase;
@@ -72,27 +86,6 @@
       line-height: 1.7;
       font-size: 15px;
     }
-    .two-column {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.two-column .image-side {
-  flex: 1 1 40%;
-}
-
-.two-column .image-side img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px 0 0 12px;
-  object-fit: cover;
-}
-
-.two-column .content {
-  flex: 1 1 60%;
-}
 
     .menu {
       margin-top: 24px;
@@ -112,6 +105,7 @@
       margin-bottom: 8px;
       display: flex;
       align-items: center;
+      font-size: 15px;
     }
 
     .menu ul li span {
@@ -153,29 +147,38 @@
       font-size: 14px;
       color: #6b7280;
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .two-column {
+        flex-direction: column;
+      }
+      .two-column .image-side img {
+        border-radius: 12px 12px 0 0;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Header dengan Logo -->
   <header>
-    <!-- Logo Selaras -->
-    <img src="assets/logo.png" alt="Logo Selaras Bar">
+    <img src="assets/logo-bar.png" alt="Logo Selaras Bar">
   </header>
 
   <div class="container">
     <!-- Foto + Deskripsi -->
-   <div class="card two-column">
-  <div class="image-side">
-    <img src="assets/bar2.png" alt="Selaras Bar" />
-  </div>
-  <div class="content">
-    <h2>Selaras Bar</h2>
-    <p>
-      ⚡ Tersedia colokan listrik untuk mengecas HP.<br>
-      📖 Beberapa buku bacaan ringan bisa dinikmati sambil bersantai.<br>
-      🤝 Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
-    </p>
-
+    <div class="card two-column">
+      <div class="image-side">
+        <img src="assets/BAR.PNG" alt="Selaras Bar" />
+      </div>
+      <div class="content">
+        <h2>Selaras Bar</h2>
+        <p>
+          ⚡ Tersedia colokan listrik untuk mengecas HP.<br>
+          📖 Beberapa buku bacaan ringan bisa dinikmati sambil bersantai.<br>
+          🤝 Kami juga dengan senang hati menerima sumbangan buku dari siapa pun yang ingin berbagi.
+        </p>
 
         <!-- Menu -->
         <div class="menu">
@@ -205,7 +208,3 @@
 
 </body>
 </html>
-
-
-
-
