@@ -1,387 +1,230 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Selaras Beach — Aktivitas & Booking</title>
-  <meta name="description" content="Selaras Beach - Nikmati Stand Up Paddleboard, Snorkeling, Canoe & pengalaman pantai lainnya." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stand Up Paddleboard - Selaras Beach</title>
   <style>
-    :root{
-      --sky-600:#0284c7;
-      --sky-700:#0369a1;
-      --muted:#61748b;
-      --card-bg: #ffffff;
-      --glass: rgba(255,255,255,0.7);
-      --radius: 14px;
-      --container: 1100px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    :root {
+      --primary: #1f8a70;
+      --secondary: #0ea5e9;
+      --light: #f9fafb;
+      --dark: #0c2231;
+      --muted: #6c7a86;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background: linear-gradient(180deg,#ebf8ff 0%, #ffffff 60%);
-      color:#0f172a;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
     }
-    .wrap{max-width:var(--container);margin:0 auto;padding:28px;}
-    header{
-      background:linear-gradient(90deg,var(--sky-600),var(--sky-700));
-      color:white;
-      padding:18px 28px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      box-shadow: 0 6px 20px rgba(3, 105, 161, 0.12);
+
+    header {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
     }
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo img{height:44px;width:44px;border-radius:8px;object-fit:cover}
-    .logo h1{font-size:20px;margin:0}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:rgba(255,255,255,0.93);text-decoration:none;font-weight:600}
-    nav a:hover{text-decoration:underline}
-    .hero{
-      margin-top:22px;
-      border-radius:var(--radius);
-      overflow:hidden;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:0;
-      align-items:stretch;
-      box-shadow: 0 10px 30px rgba(2,132,199,0.08);
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
     }
-    .hero .img{
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=6f9f6b9fe2d1c9dbd1b4f8b9c8b4b6a0');
-      background-size:cover;background-position:center;
-      min-height:360px;
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      opacity: 0.9;
     }
-    .hero .content{
-      padding:34px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    .hero h2{margin:0 0 12px 0;font-size:32px;color:var(--sky-700)}
-    .hero p{margin:0 0 18px 0;color:var(--muted)}
-    .btn{
-      display:inline-block;
-      background:var(--sky-600);
-      color:white;
-      padding:10px 16px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:700;
-      box-shadow: 0 6px 18px rgba(2,132,199,0.18);
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
     }
-    .section{margin-top:28px;padding:28px;border-radius:var(--radius);background:var(--card-bg);box-shadow: 0 8px 30px rgba(12, 74, 110, 0.04);}
-    .section h3{margin:0 0 16px 0;color:var(--sky-700)}
-    /* Activities grid */
-    .grid{display:grid;gap:18px}
-    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
-    .card{
-      border-radius:12px;
-      overflow:hidden;
-      background:linear-gradient(180deg, #ffffff, #fbfdff);
-      box-shadow: 0 8px 24px rgba(2,132,199,0.06);
-      display:flex;flex-direction:column;
-      transition:transform .18s ease, box-shadow .18s;
+
+    .sup-img {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .card:hover{transform:translateY(-6px);box-shadow: 0 18px 40px rgba(2,132,199,0.12)}
-    .card img{width:100%;height:180px;object-fit:cover;display:block}
-    .card .body{padding:14px;flex:1;display:flex;flex-direction:column}
-    .card .title{font-weight:700;margin:0 0 6px 0;color:#0b4a6f}
-    .card .desc{margin:0 0 10px 0;color:var(--muted);font-size:14px;flex:1}
-    .card .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
-    .price{font-weight:800;color:var(--sky-700)}
-    .small{font-size:13px;color:var(--muted)}
-    /* Modal / detail */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
-    .modal{background:white;border-radius:12px;max-width:980px;width:100%;overflow:hidden;display:grid;grid-template-columns:1fr 420px;box-shadow:0 30px 80px rgba(2,132,199,0.16)}
-    .modal img{width:100%;height:100%;object-fit:cover}
-    .modal .detail{padding:22px}
-    .close{background:none;border:0;font-size:20px;color:var(--muted);cursor:pointer}
-    /* testimonial */
-    .testi{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .quote{background:linear-gradient(180deg,#f8fdff,#ffffff);padding:18px;border-radius:12px}
-    .quote p{margin:0;color:var(--muted)}
-    .quote .who{margin-top:10px;font-weight:700;color:var(--sky-700)}
-    /* contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
-    .contact-card{padding:16px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfdff);box-shadow:0 12px 30px rgba(2,132,199,0.04)}
-    .form-row{display:flex;gap:10px}
-    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef7;font-size:14px}
-    textarea{min-height:120px;resize:vertical}
-    footer{margin-top:22px;padding:28px;border-radius:12px;text-align:center;background:linear-gradient(90deg,var(--sky-600),var(--sky-700));color:white}
-    /* responsive */
-    @media (max-width:980px){
-      .modal{grid-template-columns:1fr}
-      .hero{grid-template-columns:1fr}
-      .grid.cols-3{grid-template-columns:repeat(2,1fr)}
-      .contact-grid{grid-template-columns:1fr}
-      .testi{grid-template-columns:1fr}
+
+    .sup-img img {
+      width: 100%;
+      display: block;
     }
-    @media (max-width:620px){
-      nav{display:none}
-      .grid.cols-3{grid-template-columns:1fr}
-      header{padding:14px}
-      .hero h2{font-size:26px}
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
     }
-    /* small helper */
-    .muted{color:var(--muted)}
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--secondary);
+      margin-top: 0.5rem;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    form label {
+      font-weight: 600;
+    }
+
+    form input, form select, form textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    form button {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: #166b56;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin: 2rem auto 0;
+      text-decoration: none;
+      background: var(--secondary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background: #0877b5;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header role="banner" aria-label="Selaras Beach header">
-      <div class="logo">
-        <img alt="Logo Selaras" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=6f9f6b9fe2d1c9dbd1b4f8b9c8b4b6a0">
-        <div>
-          <h1>Selaras Beach</h1>
-          <div style="font-size:12px;color:rgba(255,255,255,0.9)">Pantai • Aktivitas • Booking</div>
-        </div>
+
+  <!-- Header -->
+  <header>
+    <h1>Stand Up Paddleboard</h1>
+    <p>Rasakan pengalaman mendayung di atas laut tropis Selaras Beach</p>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <!-- Foto SUP -->
+      <div class="sup-img">
+        <img src="assets/SUP.PNG" alt="Stand Up Paddleboard di Selaras Beach">
       </div>
 
-      <nav role="navigation" aria-label="Utama">
-        <a href="#home">Home</a>
-        <a href="#activities">Aktivitas</a>
-        <a href="#testimonials">Testimoni</a>
-        <a href="#contact">Kontak</a>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <main>
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="img" role="img" aria-label="Pemandangan pantai Selaras"></div>
-        <div class="content">
-          <h2 id="hero-title">Nikmati Pantai Selaras — Aktivitas Seru & Santai</h2>
-          <p>Selaras Beach menawarkan Stand Up Paddleboard, Snorkeling, Canoe, dan layanan booking yang mudah. Cocok untuk keluarga, pasangan, dan petualang.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
-            <a class="btn" href="#activities">Lihat Aktivitas</a>
-            <a class="btn" href="#contact" style="background:#10b981">Booking Sekarang</a>
-          </div>
+      <!-- Info -->
+      <div>
+        <div class="card">
+          <h2>Tentang Aktivitas</h2>
+          <p>
+            Stand Up Paddleboard (SUP) adalah cara seru untuk menjelajahi laut Selaras. 
+            Cocok untuk pemula maupun yang berpengalaman, Anda akan mendapatkan briefing singkat 
+            sebelum mulai mendayung. Semua peralatan termasuk papan dan life jacket disediakan.
+          </p>
+          <p class="price">💰 Harga Sewa: Rp 50.000 / 1 jam</p>
         </div>
-      </section>
 
-      <!-- Activities -->
-      <section class="section" id="activities" aria-labelledby="activities-title">
-        <h3 id="activities-title">Aktivitas Populer</h3>
-        <p class="muted" style="margin-top:6px;margin-bottom:14px">Pilih aktivitas yang sesuai — kami menyediakan peralatan, briefing, dan pemandu berpengalaman.</p>
-
-        <div class="grid cols-3" role="list">
-          <!-- Card 1: SUP -->
-          <article class="card" role="listitem" aria-labelledby="sup-title">
-            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b8a0fb2f5b1f2b5a9f2f6f7d5ea7d5b" alt="Stand Up Paddleboard di Selaras">
-            <div class="body">
-              <h4 class="title" id="sup-title">Stand Up Paddleboard</h4>
-              <p class="desc">Rasakan tenangnya laut Selaras dengan SUP. Cocok untuk pemula dan yang berpengalaman. Termasuk briefing & life jacket.</p>
-              <div class="meta" style="margin-top:8px">
-                <div>
-                  <div class="price">Rp50.000 / jam</div>
-                  <div class="small">Sudah termasuk instruktur</div>
-                </div>
-                <div>
-                  <button class="btn" onclick="openDetail('sup')" aria-expanded="false">Detail</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 2: Snorkeling -->
-          <article class="card" role="listitem" aria-labelledby="snork-title">
-            <img src="https://images.unsplash.com/photo-1518182170546-3e7f3f0f7a43?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=22c3a6d8f5a2e6d6f4b7e3f2a6d1d0c9" alt="Snorkeling">
-            <div class="body">
-              <h4 class="title" id="snork-title">Snorkeling</h4>
-              <p class="desc">Eksplorasi terumbu dan biota laut. Paket tersedia dengan guide dan peralatan lengkap.</p>
-              <div class="meta" style="margin-top:8px">
-                <div><div class="price">Mulai Rp80.000</div><div class="small">Durasi dan lokasi bervariasi</div></div>
-                <div><a href="#contact" class="btn">Booking</a></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 3: Canoe -->
-          <article class="card" role="listitem" aria-labelledby="canoe-title">
-            <img src="https://images.unsplash.com/photo-1506277881900-24b9b1c3b4b9?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=81d1a5e9f2f1b1a2c3d4e5f6a7b8c9d0" alt="Canoe">
-            <div class="body">
-              <h4 class="title" id="canoe-title">Canoe</h4>
-              <p class="desc">Kayak/canoe santai untuk keluarga — nikmati pemandangan pantai dari air.</p>
-              <div class="meta" style="margin-top:8px">
-                <div><div class="price">Rp40.000 / jam</div><div class="small">Kapasitas 2-3 orang</div></div>
-                <div><a href="#contact" class="btn">Booking</a></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Modal detail for SUP -->
-      <div id="modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-        <div class="modal" role="document">
-          <div style="min-height:320px">
-            <img alt="Stand Up Paddleboard detail" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b8a0fb2f5b1f2b5a9f2f6f7d5ea7d5b">
-          </div>
-          <div class="detail">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-              <div>
-                <h3 id="modal-title" style="margin:0;color:var(--sky-700)">Stand Up Paddleboard (SUP)</h3>
-                <div class="small" style="margin-top:6px">Rp50.000 / jam • Termasuk life jacket & briefing</div>
-              </div>
-              <button class="close" onclick="closeModal()" aria-label="Tutup">&times;</button>
-            </div>
-
-            <p class="muted" style="margin-top:14px">
-              Rasakan serunya menjelajahi tenangnya lautan Selaras dengan Stand Up Paddle Board.
-              Hanya dengan Rp50.000/jam Anda mendapatkan briefing singkat sebelum memulai,
-              life jacket untuk kenyamanan dan keamanan, serta instruktur untuk pemula.
-              Nikmati pengalaman santai sekaligus menyenangkan sambil menyusuri ombak ringan dan panorama indah.
-            </p>
-
-            <ul style="margin-top:12px;color:var(--muted);line-height:1.6">
-              <li>Briefing keselamatan & teknik dasar</li>
-              <li>Peralatan: papan SUP + paddle + life jacket</li>
-              <li>Durasi: sesuai paket (per jam)</li>
-              <li>Tingkat kesulitan: cocok untuk pemula</li>
-            </ul>
-
-            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" href="#contact">Booking Sekarang</a>
-              <a class="btn" style="background:#0ea5a4" href="https://wa.me/6281234567890?text=Saya%20ingin%20booking%20SUP%20di%20Selaras%20Beach" target="_blank" rel="noopener noreferrer">Chat WhatsApp</a>
-            </div>
-          </div>
+        <div class="card">
+          <h2>Fasilitas Termasuk</h2>
+          <ul>
+            <li>🛶 Papan Stand Up Paddleboard</li>
+            <li>🦺 Life Jacket (Pelampung)</li>
+            <li>👨‍🏫 Briefing singkat sebelum mulai</li>
+            <li>🌊 Akses langsung ke laut Selaras</li>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <!-- Testimonials -->
-      <section class="section" id="testimonials" aria-labelledby="testi-title">
-        <h3 id="testi-title">Testimoni Pengunjung</h3>
-        <div class="testi" style="margin-top:12px">
-          <div class="quote">
-            <p>“Pengalaman SUP di Selaras sangat menyenangkan — air tenang, staf ramah, instruktur sabar. Recommend!”</p>
-            <div class="who">— Andi, Jakarta</div>
-          </div>
-          <div class="quote">
-            <p>“Liburan keluarga kami jadi lebih seru. Banyak pilihan aktivitas dan fasilitas bersih.”</p>
-            <div class="who">— Sinta, Bandung</div>
-          </div>
-        </div>
-      </section>
+    <!-- Form Reservasi -->
+    <div class="card">
+      <h2>Reservasi SUP</h2>
+      <form action="mailto:info@selarasbeach.com" method="post" enctype="text/plain">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama" name="Nama" required>
 
-      <!-- Contact -->
-      <section class="section" id="contact" aria-labelledby="contact-title">
-        <h3 id="contact-title">Kontak & Booking</h3>
-        <div class="muted" style="margin-top:6px">Isi form atau hubungi via WhatsApp untuk reservasi dan pertanyaan cepat.</div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" required>
 
-        <div class="contact-grid" style="margin-top:16px">
-          <div class="contact-card">
-            <form id="contactForm" onsubmit="submitForm(event)" aria-label="Formulir kontak">
-              <div style="display:flex;gap:10px;margin-bottom:10px">
-                <input required name="name" placeholder="Nama lengkap" />
-                <input required name="phone" placeholder="Nomor telepon (WhatsApp)" />
-              </div>
-              <div style="display:flex;gap:10px;margin-bottom:10px">
-                <input required name="email" type="email" placeholder="Email (opsional)" />
-                <select name="activity" required>
-                  <option value="">Pilih aktivitas</option>
-                  <option value="sup">Stand Up Paddleboard</option>
-                  <option value="snorkeling">Snorkeling</option>
-                  <option value="canoe">Canoe</option>
-                </select>
-              </div>
-              <textarea name="message" placeholder="Tanggal/keperluan & catatan tambahan"></textarea>
-              <div style="margin-top:10px;display:flex;gap:10px">
-                <button class="btn" type="submit">Kirim & Booking</button>
-                <a class="btn" href="https://wa.me/6281234567890?text=Halo%20Selaras%20Beach,%20saya%20ingin%20booking" target="_blank" rel="noopener noreferrer" style="background:#10b981">Chat WhatsApp</a>
-              </div>
-            </form>
-          </div>
+        <label for="tanggal">Tanggal</label>
+        <input type="date" id="tanggal" name="Tanggal" required>
 
-          <div>
-            <div class="contact-card" style="margin-bottom:12px">
-              <strong>Alamat</strong>
-              <p class="muted" style="margin-top:6px">Jl. Pantai Selaras No.1 — Kecamatan Pantai, Provinsi</p>
-              <p style="margin-top:6px"><strong>Telepon:</strong> +62 812 3456 7890</p>
-              <p style="margin-top:6px"><strong>Email:</strong> info@selarasbeach.com</p>
-            </div>
+        <label for="jam">Jam Sewa</label>
+        <input type="time" id="jam" name="Jam" required>
 
-            <div style="border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(2,132,199,0.06);">
-              <!-- Replace src with your real Google Maps iframe when deploying -->
-              <iframe
-                title="Google Maps Selaras Beach"
-                src="https://www.google.com/maps?q=beach&output=embed"
-                style="width:100%;height:240px;border:0;"
-                loading="lazy"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+        <label for="durasi">Durasi</label>
+        <select id="durasi" name="Durasi">
+          <option value="1 jam">1 jam</option>
+          <option value="2 jam">2 jam</option>
+          <option value="setengah hari">Setengah hari</option>
+        </select>
 
-    <footer role="contentinfo">
-      <div style="max-width:var(--container);margin:0 auto;">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-          <div>&copy; <span id="year"></span> Selaras Beach — Semua hak dilindungi</div>
-          <div style="font-size:13px">Ikuti kami: <strong>Instagram</strong> · <strong>Facebook</strong></div>
-        </div>
-      </div>
-    </footer>
+        <label for="pesan">Pesan Tambahan</label>
+        <textarea id="pesan" name="Pesan" rows="3"></textarea>
+
+        <button type="submit">Kirim Reservasi</button>
+      </form>
+    </div>
+
+    <!-- Tombol Kembali -->
+    <div style="text-align:center;">
+      <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+    </div>
   </div>
 
-  <script>
-    // set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // modal logic
-    const modal = document.getElementById('modal');
-    function openDetail(key){
-      // for accessibility, set aria-hidden false and show
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden','false');
-      // set focus inside modal for keyboard users
-      modal.querySelector('.close').focus();
-      document.body.style.overflow = 'hidden';
-      // update expanded states for buttons (simple)
-      document.querySelectorAll('[onclick^="openDetail"]').forEach(b => b.setAttribute('aria-expanded','true'));
-    }
-    function closeModal(){
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-      document.querySelectorAll('[onclick^="openDetail"]').forEach(b => b.setAttribute('aria-expanded','false'));
-    }
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // simple form handler (client-side): open whatsapp prefill
-    function submitForm(e){
-      e.preventDefault();
-      const form = e.target;
-      const name = encodeURIComponent(form.name.value || '');
-      const phone = encodeURIComponent(form.phone.value || '');
-      const activity = encodeURIComponent(form.activity.value || '');
-      const message = encodeURIComponent(form.message.value || '');
-      const text = `Halo Selaras Beach,%0ASaya%20ingin%20booking:%0A- Nama: ${name}%0A- Hp: ${phone}%0A- Aktivitas: ${activity}%0A- Catatan: ${message}`;
-      const waLink = `https://wa.me/6281234567890?text=${text}`;
-      window.open(waLink, '_blank');
-    }
-
-    // smooth scroll (optional)
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const href = a.getAttribute('href');
-        if(href.startsWith('#')){
-          e.preventDefault();
-          const el = document.querySelector(href);
-          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-        }
-      });
-    });
-  </script>
 </body>
 </html>
