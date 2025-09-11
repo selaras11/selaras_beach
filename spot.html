@@ -1,164 +1,228 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spot Nongkrong - Selaras Beach</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #1f8a70;
+      --secondary: #0ea5e9;
+      --light: #f9fafb;
+      --dark: #0c2231;
+      --muted: #6c7a86;
+    }
+
     body {
-      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #fde2e4, #f9bec7); /* pink pastel */
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
     }
+
     header {
-      background: #f06292; /* pink lebih tegas */
+      background: var(--primary);
       color: white;
-      padding: 16px;
       text-align: center;
+      padding: 2rem 1rem;
     }
-    header img {
-      height: 60px;
-      margin-bottom: 8px;
-    }
-    header h2 {
+
+    header h1 {
       margin: 0;
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 2rem;
     }
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 20px;
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
       background: white;
       border-radius: 16px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
     }
-    h1 {
-      color: #e91e63;
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 30px;
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--primary);
     }
+
+    /* Galeri */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
     }
+
     .gallery img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
       border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: 0.3s;
     }
+
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
+
     /* Lightbox */
     .lightbox {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 9999;
+      padding: 1rem;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
+      overflow: auto;
       background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
     }
+
     .lightbox img {
-      max-width: 80%;
+      display: block;
+      max-width: 90%;
       max-height: 80%;
+      margin: 5% auto;
       border-radius: 12px;
     }
-    .close, .prev, .next {
+
+    .close {
       position: absolute;
-      color: white;
-      font-size: 2rem;
-      padding: 10px;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
       cursor: pointer;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 30px;
       user-select: none;
     }
-    .close { top: 20px; right: 30px; }
-    .prev { top: 50%; left: 30px; transform: translateY(-50%); }
-    .next { top: 50%; right: 30px; transform: translateY(-50%); }
-    .close:hover, .prev:hover, .next:hover {
-      color: #f48fb1;
-    }
-    nav {
-      margin-top: 30px;
-      text-align: center;
-    }
-    nav a {
+
+    .prev { left: 0; }
+    .next { right: 0; }
+
+    .btn-back {
+      display: inline-block;
+      margin: 2rem auto 0;
       text-decoration: none;
-      background: #e91e63;
+      background: var(--secondary);
       color: white;
-      padding: 12px 18px;
+      padding: 0.8rem 1.5rem;
       border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
-    nav a:hover {
-      background: #ad1457;
+
+    .btn-back:hover {
+      background: #0877b5;
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <img src="assets/logo1.png" alt="Logo Selaras Beach">
-    <h2>Selaras Beach</h2>
+    <h1>Spot Nongkrong</h1>
+    <p>Tempat nyaman untuk bersantai di Selaras Beach</p>
   </header>
 
-  <main>
-    <h1>Spot Nongkrong</h1>
-    <div class="gallery">
-      <img src="assets/gambar5.jpeg" alt="Spot 1">
-      <img src="assets/gambar8.jpeg" alt="Spot 2">
-      <img src="assets/spot1.jpeg" alt="Spot 3">
-      <img src="assets/spot2.jpeg" alt="Spot 4">
-      <img src="assets/spot3.jpeg" alt="Spot 4">
+  <div class="container">
+
+    <!-- Deskripsi -->
+    <div class="card">
+      <h2>Tentang Spot Nongkrong</h2>
+      <p>
+        Di Selaras Beach, kami menyediakan berbagai spot nongkrong dengan suasana tropis yang hangat. 
+        Anda bisa duduk santai bersama teman atau keluarga, menikmati minuman segar dari Selaras Bar, 
+        sambil memandang laut biru yang tenang. Spot ini dirancang agar nyaman baik siang maupun malam hari.
+      </p>
     </div>
 
-    <nav>
-      <a href="index.html">← Kembali ke beranda</a>
-    </nav>
-  </main>
+    <!-- Galeri -->
+    <div class="card">
+      <h2>Galeri Spot Nongkrong</h2>
+      <div class="gallery">
+        <img src="assets/spot1.jpg" alt="Spot Nongkrong 1" onclick="openLightbox(0)">
+        <img src="assets/spot2.jpg" alt="Spot Nongkrong 2" onclick="openLightbox(1)">
+        <img src="assets/spot3.jpg" alt="Spot Nongkrong 3" onclick="openLightbox(2)">
+        <img src="assets/spot4.jpg" alt="Spot Nongkrong 4" onclick="openLightbox(3)">
+        <img src="assets/spot5.jpg" alt="Spot Nongkrong 5" onclick="openLightbox(4)">
+      </div>
+    </div>
+
+    <!-- Tombol kembali -->
+    <div style="text-align:center;">
+      <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+    </div>
+  </div>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
+  <div id="lightbox" class="lightbox">
     <span class="close" onclick="closeLightbox()">&times;</span>
     <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
-    <img id="lightbox-img" src="">
     <span class="next" onclick="changeSlide(1)">&#10095;</span>
+    <img id="lightbox-img" src="">
   </div>
 
   <script>
-    const gallery = document.querySelectorAll('.gallery img');
+    const images = document.querySelectorAll('.gallery img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     let currentIndex = 0;
 
-    gallery.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-        currentIndex = index;
-      });
-    });
+    function openLightbox(index) {
+      currentIndex = index;
+      lightbox.style.display = "block";
+      lightboxImg.src = images[currentIndex].src;
+    }
 
     function closeLightbox() {
-      lightbox.style.display = 'none';
+      lightbox.style.display = "none";
     }
 
     function changeSlide(direction) {
-      currentIndex = (currentIndex + direction + gallery.length) % gallery.length;
-      lightboxImg.src = gallery[currentIndex].src;
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = images.length - 1;
+      if (currentIndex >= images.length) currentIndex = 0;
+      lightboxImg.src = images[currentIndex].src;
     }
+
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.style.display === "block") {
+        if (e.key === "ArrowLeft") changeSlide(-1);
+        if (e.key === "ArrowRight") changeSlide(1);
+        if (e.key === "Escape") closeLightbox();
+      }
+    });
   </script>
+
 </body>
 </html>
-
-
