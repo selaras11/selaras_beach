@@ -84,10 +84,11 @@
 }
 
 /* Efek timbul saat dipilih */
-.layanan-card.selected {
+layanan-card.selected {
   transform: translateY(-8px);
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0 0 3px var(--brand-2);
-  border: 1px solid var(--brand-2);
+  border: 2px solid var(--brand-2);
+}
 }
 
 /* Hover efek naik */
@@ -130,8 +131,7 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
- <!-- Header -->
+  
 <!-- Header --> <header> <div class="container nav"> <a href="#home" class="brand" aria-label="Selaras Beach"> <span class="brand-mark" aria-hidden="true"> 
   <!-- wave icon --> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
     <path d="M2 12c3.5 0 3.5-4 7-4s3.5 4 7 4 3.5-4 7-4"/> </svg> </span> Selaras Beach </a>
@@ -184,37 +184,43 @@ Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan,
     <div class="grid three" style="margin-top:16px">
 
       <!-- Bar & Minuman -->
-       <a href="bar.html" style="text-decoration:none; color:inherit;">
-      <article class="layanan-card" onclick="selectCard(this)">
-        <img src="assets/BAR.png" alt="Minuman segar di bar" />
-        <h3>Bar & Minuman</h3>
-      </article>
+      <a href="bar.html" class="layanan-link">
+        <article class="layanan-card">
+          <img src="assets/BAR.png" alt="Minuman segar di bar" />
+          <h3>Bar & Minuman</h3>
+        </article>
+      </a>
 
       <!-- Stand Up Paddle Board -->
-           <a href="sup.html" style="text-decoration:none; color:inherit;">
-      <article class="layanan-card" onclick="selectCard(this)">
-        <img src="assets/SUP.png" alt="Stand Up Paddle Board" />
-        <h3>Stand Up Paddle Board</h3>
-      </article>
+      <a href="sup.html" class="layanan-link">
+        <article class="layanan-card">
+          <img src="assets/SUP.png" alt="Stand Up Paddle Board" />
+          <h3>Stand Up Paddle Board</h3>
+        </article>
+      </a>
 
       <!-- Spot Nongkrong -->
-             <a href="spot.html" style="text-decoration:none; color:inherit;">
-      <article class="layanan-card" onclick="selectCard(this)">
-        <img src="assets/TONGKRONG.png" alt="Spot Nongkrong" />
-        <h3>Spot Nongkrong</h3>
-      </article>
+      <a href="spot.html" class="layanan-link">
+        <article class="layanan-card">
+          <img src="assets/TONGKRONG.png" alt="Spot Nongkrong" />
+          <h3>Spot Nongkrong</h3>
+        </article>
+      </a>
 
     </div>
   </div>
 </section>
 
 <script>
-  function selectCard(card) {
-    // Hapus selected dari semua
-    document.querySelectorAll('.layanan-card').forEach(c => c.classList.remove('selected'));
-    // Tambah selected pada yang dipilih
-    card.classList.add('selected');
-  }
+  // Seleksi layanan
+  document.querySelectorAll('.layanan-link').forEach(link => {
+    link.addEventListener('click', function(e){
+      // Hapus semua yang terpilih
+      document.querySelectorAll('.layanan-card').forEach(c => c.classList.remove('selected'));
+      // Tambah selected ke yang diklik
+      this.querySelector('.layanan-card').classList.add('selected');
+    });
+  });
 </script>
 
 
@@ -352,6 +358,7 @@ Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan,
   </script>
 </body>
 </html>
+
 
 
 
