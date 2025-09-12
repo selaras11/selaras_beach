@@ -57,7 +57,7 @@
     .three{grid-template-columns:repeat(3,minmax(0,1fr))}
 
    
-/* Card Layanan dengan efek tombol 3D */
+/* Card default */
 .layanan-card {
   display: flex;
   flex-direction: column;
@@ -69,22 +69,25 @@
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   transition: all 0.25s ease;
   cursor: pointer;
-  position: relative;
 }
 
-.layanan-card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.25s ease;
+/* Hover efek naik */
+.layanan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
 }
 
-.layanan-card h3 {
-  margin: 0;
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--ink);
+/* Klik efek ditekan */
+.layanan-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+}
+
+/* Efek timbul saat dipilih */
+.layanan-card.selected {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0 0 3px var(--brand-2);
+  border: 1px solid var(--brand-2);
 }
 
 /* Hover efek naik */
@@ -173,31 +176,44 @@ Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan,
   </section>
 
   <!-- Layanan -->
- <section id="layanan">
+<!-- Layanan -->
+<section id="layanan">
   <div class="container">
     <h2>Layanan</h2>
     <p class="muted">Pilih layanan untuk melihat informasi lebih lanjut</p>
     <div class="grid three" style="margin-top:16px">
 
       <!-- Bar & Minuman -->
-      <a href="bar.html" style="text-decoration:none; color:inherit;">
-        <article class="card">
-          <img src="assets/BAR.png" alt="Minuman segar di bar" />
-          <div>
-            <h3>Bar & Minuman</h3>
-          </div>
-        </article>
-      </a>
+      <article class="layanan-card" onclick="selectCard(this)">
+        <img src="assets/BAR.png" alt="Minuman segar di bar" />
+        <h3>Bar & Minuman</h3>
+      </article>
 
       <!-- Stand Up Paddle Board -->
-      <a href="sup.html" style="text-decoration:none; color:inherit;">
-        <article class="card">
-          <img src="assets/SUP.png" alt="Stand Up Paddle Board" />
-          <div>
-            <h3>Stand Up Paddle Board</h3>
-          </div>
-        </article>
-      </a>
+      <article class="layanan-card" onclick="selectCard(this)">
+        <img src="assets/SUP.png" alt="Stand Up Paddle Board" />
+        <h3>Stand Up Paddle Board</h3>
+      </article>
+
+      <!-- Spot Nongkrong -->
+      <article class="layanan-card" onclick="selectCard(this)">
+        <img src="assets/TONGKRONG.png" alt="Spot Nongkrong" />
+        <h3>Spot Nongkrong</h3>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  function selectCard(card) {
+    // Hapus selected dari semua
+    document.querySelectorAll('.layanan-card').forEach(c => c.classList.remove('selected'));
+    // Tambah selected pada yang dipilih
+    card.classList.add('selected');
+  }
+</script>
+
 
       <!-- Spot Nongkrong -->
       <a href="spot.html" style="text-decoration:none; color:inherit;">
@@ -349,6 +365,7 @@ Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan,
   </script>
 </body>
 </html>
+
 
 
 
