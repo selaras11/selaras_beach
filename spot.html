@@ -201,71 +201,68 @@
     </div>
 
     <!-- Galeri -->
-    <div class="card">
-      <h2>Galeri Spot Nongkrong</h2>
-      <div class="gallery">
-        <img src="assets/spot3.jpeg" alt="relax" onclick="openLightbox(0)">
-        <img src="assets/spot1.jpeg" alt="Night Chill" onclick="openLightbox(1)">
-        <img src="assets/gambar11.jpeg" alt="hamock View" onclick="openLightbox(2)">
-        <img src="assets/gambar8.jpeg" alt="Table by the Sea" onclick="openLightbox(3)">
-        <img src="assets/gambar5.jpeg" alt="Night Chill" onclick="openLightbox(4)">
-      </div>
-    </div>
+   <script>
+  // Daftar foto galeri
+  const galleryImages = [
+    { src: "assets/spot3.jpeg", alt: "Relax" },
+    { src: "assets/spot1.jpeg", alt: "Night Chill" },
+    { src: "assets/gambar11.jpeg", alt: "Hammock View" },
+    { src: "assets/gambar8.jpeg", alt: "Table by the Sea" },
+    { src: "assets/gambar5.jpeg", alt: "Night Chill" },
+    // 🆕 Tambahkan foto berikutnya di sini
+    { src: "assets/gambar6.jpeg", alt: "Beach Vibes" },
+    { src: "assets/gambar7.jpeg", alt: "Tropical Mood" },
+    { src: "assets/gambar9.jpeg", alt: "Chill Corner" },
+  ];
 
-    <!-- Tombol kembali -->
-    <div style="text-align:center;">
-      <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
-    </div>
-  </div>
+  const galleryContainer = document.getElementById("gallery");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const caption = document.getElementById("caption");
+  let currentIndex = 0;
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" style="display:none;">
-    <span class="close" onclick="closeLightbox()">&times;</span>
-    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
-    <span class="next" onclick="changeSlide(1)">&#10095;</span>
-    <img id="lightbox-img" src="" alt="">
-    <p id="caption" style="color:white; margin-top:1rem; font-size:1.1rem;"></p>
-  </div>
+  // Generate galeri otomatis
+  galleryImages.forEach((img, index) => {
+    const imageEl = document.createElement("img");
+    imageEl.src = img.src;
+    imageEl.alt = img.alt;
+    imageEl.onclick = () => openLightbox(index);
+    galleryContainer.appendChild(imageEl);
+  });
 
-  <script>
-    const images = document.querySelectorAll('.gallery img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const caption = document.getElementById('caption');
-    let currentIndex = 0;
+  function openLightbox(index) {
+    currentIndex = index;
+    lightbox.style.display = "flex";
+    updateLightbox();
+  }
 
-    function openLightbox(index) {
-      currentIndex = index;
-      lightbox.style.display = "flex";
-      updateLightbox();
+  function closeLightbox() {
+    lightbox.style.display = "none";
+  }
+
+  function changeSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+    if (currentIndex >= galleryImages.length) currentIndex = 0;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    lightboxImg.src = galleryImages[currentIndex].src;
+    caption.textContent = galleryImages[currentIndex].alt;
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "flex") {
+      if (e.key === "ArrowLeft") changeSlide(-1);
+      if (e.key === "ArrowRight") changeSlide(1);
+      if (e.key === "Escape") closeLightbox();
     }
-
-    function closeLightbox() {
-      lightbox.style.display = "none";
-    }
-
-    function changeSlide(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = images.length - 1;
-      if (currentIndex >= images.length) currentIndex = 0;
-      updateLightbox();
-    }
-
-    function updateLightbox() {
-      lightboxImg.src = images[currentIndex].src;
-      caption.textContent = images[currentIndex].alt;
-    }
-
-    document.addEventListener("keydown", (e) => {
-      if (lightbox.style.display === "flex") {
-        if (e.key === "ArrowLeft") changeSlide(-1);
-        if (e.key === "ArrowRight") changeSlide(1);
-        if (e.key === "Escape") closeLightbox();
-      }
-    });
-  </script>
+  });
+</script>
 
 </body>
 </html>
+
 
 
