@@ -60,6 +60,51 @@
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(12,34,49,.06)}
     .card .pad{padding:16px}
     .tag{display:inline-flex;align-items:center;gap:8px;background:var(--accent);padding:6px 10px;border-radius:999px;color:var(--brand);font-weight:600;font-size:12px}
+/* Card Layanan dengan efek tombol 3D */
+.layanan-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.layanan-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease;
+}
+
+.layanan-card h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+/* Hover efek naik */
+.layanan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.layanan-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Klik efek ditekan */
+.layanan-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+}
 
     /* Gallery */
     .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -307,6 +352,7 @@ Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan,
   </script>
 </body>
 </html>
+
 
 
 
