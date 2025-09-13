@@ -112,6 +112,27 @@ layanan-card.selected {
     .gallery img{border-radius:16px;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;box-shadow:var(--shadow)}
     @media (max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}.three{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
     @media (max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)}}
+      .btn-container {
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .btn-more {
+    display: inline-block;
+    background: #1f8a70; /* warna tropis hijau */
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .btn-more:hover {
+    background: #0ea5e9; /* ocean blue */
+    transform: translateY(-2px);
+  }
 
     /* Form */
     .form{display:grid;gap:14px}
@@ -240,7 +261,12 @@ Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan,
         <img src="assets/gambar7.jpeg" alt="Sunset lembut" />
       </div>
     </div>
-  </section>
+
+   <div class="btn-container">
+    <a href="galeri.html" class="btn-more">Lihat Galeri Lengkap</a>
+  </div>
+</section>
+
 
   <!-- Reservasi -->
   <section id="reservasi">
@@ -358,6 +384,7 @@ Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan,
   </script>
 </body>
 </html>
+
 
 
 
