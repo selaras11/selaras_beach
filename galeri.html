@@ -150,6 +150,28 @@
     .close:hover {
       background: rgba(0,0,0,0.7);
     }
+
+    .slideshow-controls {
+      margin-top: 20px;
+    }
+
+    .slideshow-btn {
+      background: #1f8a70;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 0 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .slideshow-btn:hover {
+      background: #0ea5e9;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
@@ -181,6 +203,10 @@
       <a id="prevBtn">❮</a>
       <a id="nextBtn">❯</a>
     </div>
+    <div class="slideshow-controls">
+      <button class="slideshow-btn" id="playBtn">▶ Play</button>
+      <button class="slideshow-btn" id="pauseBtn">⏸ Pause</button>
+    </div>
   </div>
 
   <script>
@@ -190,13 +216,26 @@
     const closeBtn = document.getElementById('closeBtn');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
 
     let currentIndex = 0;
+    let slideshowInterval;
 
     function showLightbox(index) {
       currentIndex = index;
       lightboxImg.src = galleryItems[index].src;
       lightbox.classList.add('active');
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      showLightbox(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      showLightbox(currentIndex);
     }
 
     galleryItems.forEach((img, index) => {
@@ -205,22 +244,30 @@
 
     closeBtn.addEventListener('click', () => {
       lightbox.classList.remove('active');
+      stopSlideshow();
     });
 
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-      showLightbox(currentIndex);
-    });
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
 
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % galleryItems.length;
-      showLightbox(currentIndex);
-    });
+    // Slideshow
+    function startSlideshow() {
+      stopSlideshow();
+      slideshowInterval = setInterval(nextImage, 5000); // 5 detik
+    }
+
+    function stopSlideshow() {
+      clearInterval(slideshowInterval);
+    }
+
+    playBtn.addEventListener('click', startSlideshow);
+    pauseBtn.addEventListener('click', stopSlideshow);
 
     // Tutup dengan klik di luar gambar
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) {
         lightbox.classList.remove('active');
+        stopSlideshow();
       }
     });
   </script>
