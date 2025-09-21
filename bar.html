@@ -26,12 +26,12 @@
       background: var(--secondary);
       color: white;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     header p {
@@ -41,23 +41,16 @@
     }
 
     .container {
-      max-width: 1000px;
-      margin: 2rem auto;
+      max-width: 900px;
+      margin: 1.5rem auto;
       padding: 0 1rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: start;
     }
 
     .bar-img {
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: 0.3s;
+      margin-bottom: 1rem;
     }
 
     .bar-img img {
@@ -80,6 +73,12 @@
       color: var(--primary);
     }
 
+    .card h3 {
+      margin-top: 1.2rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
     ul {
       list-style: none;
       padding-left: 0.5rem;
@@ -96,17 +95,18 @@
     .hours {
       text-align: center;
       font-weight: 600;
-      font-size: 1.1rem;
-      padding: 1rem;
+      font-size: 1rem;
+      padding: 0.8rem;
       background: var(--secondary);
       color: white;
       border-radius: 12px;
+      margin-bottom: 1.5rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .btn-back {
       display: inline-block;
-      margin-top: 2rem;
+      margin: 2rem auto 1rem;
       text-decoration: none;
       background: var(--primary);
       color: white;
@@ -120,15 +120,47 @@
     }
 
     .card:hover, .bar-img:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.1);
     }
 
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    /* Galeri */
+    .gallery {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery img {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .gallery button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .gallery button:hover {
+      background: rgba(0,0,0,0.6);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
   </style>
 </head>
 <body>
@@ -140,65 +172,77 @@
   </header>
 
   <div class="container">
-    <div class="grid">
-      <!-- Foto Bar -->
-      <div class="bar-img">
-        <img src="assets/bar2.jpeg" alt="Bar mini Selaras Beach dengan suasana tropis">
-      </div>
+    <!-- Foto Bar -->
+    <div class="bar-img">
+      <img src="assets/bar2.jpeg" alt="Bar mini Selaras Beach dengan suasana tropis">
+    </div>
 
-      <!-- Deskripsi & Info -->
-      <div>
-        <div class="card">
-          <h2>Fasilitas</h2>
-          <ul>
-            <li>⚡ Colokan listrik untuk mengisi daya</li>
-            <li>📚 Buku bacaan ringan untuk bersantai</li>
-            <li>🌴 Suasana santai di tepi pantai</li>
-            <li>🤝 Terbuka untuk sumbangan buku</li>
-          </ul>
+    <!-- Jam Operasional -->
+    <div class="hours">
+      🕒 Jam Operasional: 10:00 Pagi – 08:00 Malam
+    </div>
+
+    <!-- Menu -->
+    <div class="card">
+      <h2>🌴 Menu Selaras</h2>
+
+      <h3>✨ Signature Drink</h3>
+      <ul>
+        <li>Selaras Coffee — Rp 16.000</li>
+        <li>Coffee Avocado — Rp 16.000</li>
+      </ul>
+
+      <h3>☕ Coffee</h3>
+      <ul>
+        <li>Americano (Ice) — Rp 10.000</li>
+        <li>Black Coffee (Hot) — Rp 7.000</li>
+        <li>V60 — Rp 18.000</li>
+        <li>Latte (Ice) — Rp 15.000</li>
+        <li>Cappuccino (Ice) — Rp 15.000</li>
+        <li>Kopi Susu — Rp 8.000</li>
+      </ul>
+
+      <h3>🥤 Fresh Drink</h3>
+      <ul>
+        <li>Blue Ocean — Rp 13.000</li>
+        <li>Squash Lemon — Rp 15.000</li>
+        <li>Squash Orange — Rp 15.000</li>
+        <li>Lemon Ice — Rp 13.000</li>
+      </ul>
+
+      <h3>🍫 Tea & Chocolate</h3>
+      <ul>
+        <li>Chocolate (Ice Rp 12.000 | Hot Rp 10.000)</li>
+        <li>Teh Tarik (Ice Rp 12.000 | Hot Rp 10.000)</li>
+        <li>Milo (Ice Rp 13.000 | Hot Rp 11.000)</li>
+        <li>Extrajos Susu (Ice) — Rp 12.000</li>
+        <li>Tea (Ice Rp 10.000 | Hot Rp 8.000)</li>
+        <li>Lemon Tea (Ice Rp 10.000 | Hot Rp 8.000)</li>
+      </ul>
+    </div>
+
+    <!-- Fasilitas -->
+    <div class="card">
+      <h2>Fasilitas</h2>
+      <ul>
+        <li>⚡ Colokan listrik untuk mengisi daya</li>
+        <li>📚 Buku bacaan ringan untuk bersantai</li>
+        <li>🌴 Suasana santai di tepi pantai</li>
+        <li>🤝 Terbuka untuk sumbangan buku</li>
+      </ul>
+    </div>
+
+    <!-- Galeri Foto -->
+    <div class="card">
+      <h2>📸 Suasana Bar</h2>
+      <div class="gallery">
+        <div class="gallery-track">
+          <img src="assets/bar1.jpeg" alt="Suasana bar siang hari">
+          <img src="assets/bar2.jpeg" alt="Bar Selaras dengan pencahayaan sore">
+          <img src="assets/bar3.jpeg" alt="Minuman signature di bar">
         </div>
-
-        <div class="card">
-          <h2>🌴 Menu Selaras</h2>
-          
-          <h3>✨ Signature Drink</h3>
-          <ul>
-            <li>Selaras Coffee — Rp 16.000</li>
-            <li>Coffee Avocado — Rp 16.000</li>
-          </ul>
-
-          <h3>☕ Coffee</h3>
-          <ul>
-            <li>Americano (Ice) — Rp 10.000</li>
-            <li>Black Coffee (Hot) — Rp 7.000</li>
-            <li>V60 — Rp 18.000</li>
-            <li>Latte (Ice) — Rp 15.000</li>
-            <li>Cappuccino (Ice) — Rp 15.000</li>
-            <li>Kopi Susu — Rp 8.000</li>
-          </ul>
-
-          <h3>🥤 Fresh Drink</h3>
-          <ul>
-            <li>Blue Ocean — Rp 13.000</li>
-            <li>Squash Lemon — Rp 15.000</li>
-            <li>Squash Orange — Rp 15.000</li>
-            <li>Lemon Ice — Rp 13.000</li>
-          </ul>
-
-          <h3>🍫 Tea & Chocolate</h3>
-          <ul>
-            <li>Chocolate (Ice Rp 12.000 | Hot Rp 10.000)</li>
-            <li>Teh Tarik (Ice Rp 12.000 | Hot Rp 10.000)</li>
-            <li>Milo (Ice Rp 13.000 | Hot Rp 11.000)</li>
-            <li>Extrajos Susu (Ice) — Rp 12.000</li>
-            <li>Tea (Ice Rp 10.000 | Hot Rp 8.000)</li>
-            <li>Lemon Tea (Ice Rp 10.000 | Hot Rp 8.000)</li>
-          </ul>
-        </div>
-
-        <div class="hours">
-          🕒 Jam Operasional: 10:00 Pagi – 08:00 Malam
-        </div>
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
       </div>
     </div>
 
@@ -206,6 +250,22 @@
       <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
     </div>
   </div>
+
+  <script>
+    const track = document.querySelector('.gallery-track');
+    const slides = document.querySelectorAll('.gallery img');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    let index = 0;
+
+    function showSlide(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    prev.addEventListener('click', () => showSlide(index - 1));
+    next.addEventListener('click', () => showSlide(index + 1));
+  </script>
 
 </body>
 </html>
