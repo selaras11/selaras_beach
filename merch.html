@@ -4,151 +4,257 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Merchandise – Selaras Beach</title>
+
   <style>
+    /* ============ THEME COLORS ============ */
     :root {
-      --bg: #f7fafb;
-      --card: #ffffff;
-      --ink: #0c2231;
-      --brand: #1f8a70;
-      --accent: #f8b400;
+      --sand: #f6f1e7;
+      --ocean: #1f8a70;
+      --wood: #d9b382;
+      --gold: #f4c542;
+      --text: #0b1e2d;
+      --white: #fff;
     }
+
+    /* ============ GLOBAL STYLE ============ */
     body {
       font-family: "Poppins", sans-serif;
       margin: 0;
-      background: var(--bg);
-      color: var(--ink);
+      background: var(--sand);
+      color: var(--text);
+      overflow-x: hidden;
     }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      letter-spacing: 0.5px;
+    }
+
+    /* ============ HEADER ============ */
     header {
-      background: var(--brand);
+      background: linear-gradient(135deg, var(--ocean), var(--wood));
       color: white;
       text-align: center;
-      padding: 16px 0;
+      padding: 22px 16px;
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
+
     header h1 {
       margin: 0;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
     }
+
     header a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       position: absolute;
       left: 16px;
-      top: 16px;
+      top: 22px;
       font-size: 0.9rem;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.25);
       padding: 6px 10px;
       border-radius: 8px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      padding: 24px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-    }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card h3 {
-      margin: 12px 0 4px;
-    }
-    .harga {
-      color: var(--brand);
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .btn {
-      background: var(--brand);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 16px;
       transition: 0.3s;
     }
-    .btn:hover {
-      background: var(--accent);
-      color: var(--ink);
+
+    header a:hover {
+      background: rgba(255,255,255,0.4);
     }
-    /* Keranjang Sidebar */
+
+    /* ============ GRID PRODUK ============ */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      padding: 40px 24px 80px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin: 10px 0 6px;
+      font-size: 1.2rem;
+    }
+
+    .harga {
+      color: var(--ocean);
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      background: var(--ocean);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--text);
+      transform: scale(1.05);
+    }
+
+    /* ============ FLOATING KERANJANG BUTTON ============ */
     #keranjangBtn {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: var(--accent);
+      background: var(--gold);
       border: none;
-      padding: 14px;
+      padding: 16px;
       border-radius: 50%;
-      font-size: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 22px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
       cursor: pointer;
       z-index: 20;
+      transition: 0.3s;
     }
+
+    #keranjangBtn:hover {
+      transform: scale(1.1);
+      background: var(--ocean);
+      color: white;
+    }
+
+    /* ============ SIDEBAR KERANJANG ============ */
     .sidebar {
       position: fixed;
       right: -400px;
       top: 0;
-      width: 320px;
+      width: 340px;
       height: 100%;
-      background: white;
-      box-shadow: -3px 0 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: right 0.3s ease;
+      background: #fffdf9;
+      box-shadow: -3px 0 12px rgba(0,0,0,0.2);
+      padding: 24px;
+      transition: right 0.4s ease;
       overflow-y: auto;
       z-index: 30;
     }
+
     .sidebar.show {
       right: 0;
     }
+
     .sidebar h3 {
       margin-top: 0;
+      font-size: 1.4rem;
+      border-bottom: 2px solid var(--ocean);
+      padding-bottom: 6px;
     }
+
     #listKeranjang {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     #listKeranjang li {
-      padding: 8px 0;
+      padding: 10px 0;
       border-bottom: 1px solid #eee;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 0.95rem;
     }
+
     #listKeranjang button {
       background: none;
       border: none;
-      color: red;
+      color: crimson;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
+
+    .total {
+      margin-top: 16px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      color: var(--ocean);
+    }
+
+    .sidebar .btn {
+      width: 100%;
+      margin-top: 12px;
+      background: var(--ocean);
+    }
+
+    .sidebar .btn:hover {
+      background: var(--gold);
+      color: var(--text);
+    }
+
+    /* ============ FOOTER ============ */
     footer {
+      background: var(--ocean);
+      color: white;
       text-align: center;
-      padding: 20px;
-      color: #666;
+      padding: 24px;
       font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    footer span {
+      color: var(--gold);
+    }
+
+    /* ============ RESPONSIVE FIX ============ */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      .grid { padding: 24px 12px 70px; }
     }
   </style>
 </head>
+
 <body>
   <header>
     <a href="index.html">← Beranda</a>
@@ -159,42 +265,53 @@
     <section class="grid" id="produk">
       <div class="card">
         <img src="assets/kaos1.jpg" alt="Kaos Selaras Beach">
-        <h3>Kaos Selaras Beach</h3>
-        <p class="harga">Rp 120.000</p>
-        <button class="btn" onclick="tambahKeKeranjang('Kaos Selaras Beach', 120000)">Tambah</button>
+        <div class="card-content">
+          <h3>Kaos Selaras Beach</h3>
+          <p class="harga">Rp 120.000</p>
+          <button class="btn" onclick="tambahKeKeranjang('Kaos Selaras Beach', 120000)">Tambah ke Keranjang</button>
+        </div>
       </div>
+
       <div class="card">
         <img src="assets/topi1.jpg" alt="Topi Pantai Selaras">
-        <h3>Topi Pantai</h3>
-        <p class="harga">Rp 85.000</p>
-        <button class="btn" onclick="tambahKeKeranjang('Topi Pantai', 85000)">Tambah</button>
+        <div class="card-content">
+          <h3>Topi Pantai</h3>
+          <p class="harga">Rp 85.000</p>
+          <button class="btn" onclick="tambahKeKeranjang('Topi Pantai', 85000)">Tambah ke Keranjang</button>
+        </div>
       </div>
+
       <div class="card">
         <img src="assets/mug1.jpg" alt="Mug Selaras Beach">
-        <h3>Mug Selaras Beach</h3>
-        <p class="harga">Rp 65.000</p>
-        <button class="btn" onclick="tambahKeKeranjang('Mug Selaras Beach', 65000)">Tambah</button>
+        <div class="card-content">
+          <h3>Mug Selaras Beach</h3>
+          <p class="harga">Rp 65.000</p>
+          <button class="btn" onclick="tambahKeKeranjang('Mug Selaras Beach', 65000)">Tambah ke Keranjang</button>
+        </div>
       </div>
+
       <div class="card">
         <img src="assets/totebag.jpg" alt="Totebag Tropis">
-        <h3>Totebag Tropis</h3>
-        <p class="harga">Rp 90.000</p>
-        <button class="btn" onclick="tambahKeKeranjang('Totebag Tropis', 90000)">Tambah</button>
+        <div class="card-content">
+          <h3>Totebag Tropis</h3>
+          <p class="harga">Rp 90.000</p>
+          <button class="btn" onclick="tambahKeKeranjang('Totebag Tropis', 90000)">Tambah ke Keranjang</button>
+        </div>
       </div>
     </section>
   </main>
 
-  <button id="keranjangBtn" onclick="toggleKeranjang()">🧺</button>
+  <button id="keranjangBtn" onclick="toggleKeranjang()">🛒</button>
 
   <div id="sidebar" class="sidebar">
-    <h3>Keranjang</h3>
+    <h3>Keranjang Belanja</h3>
     <ul id="listKeranjang"></ul>
-    <p><strong>Total:</strong> <span id="totalHarga">Rp 0</span></p>
+    <p class="total">Total: <span id="totalHarga">Rp 0</span></p>
     <button class="btn" onclick="checkoutWA()">Checkout via WhatsApp</button>
   </div>
 
   <footer>
-    © 2025 Selaras Beach. Semua Hak Dilindungi 🌴
+    © 2025 <span>Selaras Beach</span> — Harmoni di Tepi Laut 🌴
   </footer>
 
   <script>
@@ -204,7 +321,7 @@
       keranjang.push({ nama, harga });
       localStorage.setItem('keranjang', JSON.stringify(keranjang));
       renderKeranjang();
-      alert(`${nama} ditambahkan ke keranjang!`);
+      alert(`${nama} telah ditambahkan ke keranjang.`);
     }
 
     function renderKeranjang() {
@@ -216,7 +333,7 @@
       keranjang.forEach((item, i) => {
         total += item.harga;
         list.innerHTML += `
-          <li>${item.nama} - Rp ${item.harga.toLocaleString()}
+          <li>${item.nama} <span>Rp ${item.harga.toLocaleString()}</span>
           <button onclick="hapusItem(${i})">✖</button></li>`;
       });
 
@@ -243,7 +360,7 @@
       keranjang.forEach(item => pesan += `- ${item.nama} (Rp ${item.harga.toLocaleString()})%0A`);
       const total = keranjang.reduce((a, b) => a + b.harga, 0);
       pesan += `%0ATotal: Rp ${total.toLocaleString()}`;
-      const noWA = "6281234567890"; // ganti dengan nomor WA bar kamu
+      const noWA = "6281234567890"; // Ganti dengan nomor WA Selaras Beach
       window.open(`https://wa.me/${noWA}?text=${pesan}`, "_blank");
     }
   </script>
