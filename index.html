@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Selaras Beach – Bar, SUP & Spot Nongkrong</title>
-  <meta name="description" content="Selaras Beach – bar mini, stand up paddle board, dan spot nongkrong santai di tepi pantai Dabo Singkep, Kepulauan Riau." />
+  <title>Selaras Beach</title>
+  <meta name="description" content="Selaras Beach – bar mini, stand up paddle board, dan spot nongkrong santai di tepi pantai." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg:#f7fafb;
@@ -22,129 +21,82 @@
       --shadow:0 10px 30px rgba(18, 43, 66, 0.08);
       --radius:18px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
-      color:var(--ink);
-      background:var(--bg);
-      line-height:1.6;
-      overflow-x:hidden;
-    }
-    a{text-decoration:none;color:inherit;transition:.25s ease}
-    img{max-width:100%;display:block;border-radius:12px}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-    /* HEADER */
-    header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.75);
-      backdrop-filter:saturate(180%) blur(12px);
-      border-bottom:1px solid rgba(12,34,49,.06);
-      transition:all .3s ease;
-    }
-    .container{width:min(1100px,92%);margin-inline:auto}
+    .container{width:min(1100px, 92%);margin-inline:auto}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(12,34,49,.06)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:700;font-size:1.1rem}
-    .brand-mark{
-      width:34px;height:34px;border-radius:10px;
-      background:linear-gradient(135deg,var(--brand-2),var(--brand));
-      display:grid;place-items:center;color:white;
-      box-shadow:var(--shadow);
-      transition:transform .3s ease;
-    }
-    .brand:hover .brand-mark{transform:rotate(10deg) scale(1.05)}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand-2),var(--brand));display:grid;place-items:center;color:white;box-shadow:var(--shadow)}
+    .brand-mark svg{width:20px;height:20px}
     .menu{display:flex;gap:22px;align-items:center}
     .menu a{font-weight:500;color:var(--muted)}
-    .menu a:hover{color:var(--brand-2)}
+    .menu a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:var(--brand);color:#fff;font-weight:600;box-shadow:0 8px 20px rgba(31,138,112,.25)}
+    .btn:hover{filter:brightness(1.05)}
 
-    /* BUTTONS */
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 18px;border-radius:999px;
-      background:var(--brand);color:#fff;font-weight:600;
-      box-shadow:0 8px 20px rgba(31,138,112,.25);
-      transition:all .25s ease;
-    }
-    .btn:hover{filter:brightness(1.05);transform:translateY(-2px)}
+    .hero{position:relative;isolation:isolate}
+    .hero::before{content:"";position:absolute;inset:0;background:url('assets/gambar15.jpg') center/cover no-repeat;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(255,255,255,0) 55%, rgba(247,250,251,1) 100%);z-index:-1}
+    .hero-inner{padding:96px 0 120px;color:#fff}
+    .hero h1{font-size:clamp(32px,5vw,52px);line-height:1.05;margin:0 0 14px}
+    .hero p{font-size:clamp(16px,2.5vw,18px);opacity:.95;margin:0 0 22px;max-width:640px}
 
-    /* HERO */
-    .hero{position:relative;isolation:isolate;overflow:hidden}
-    .hero::before{
-      content:"";position:absolute;inset:0;
-      background:url('assets/gambar15.jpg') center/cover no-repeat;
-      z-index:-2;transform:scale(1.05);
-    }
-    .hero::after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(255,255,255,0) 55%, rgba(247,250,251,1) 100%);
-      z-index:-1;
-    }
-    .hero-inner{
-      padding:110px 0 130px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.3);
-      animation:fadeIn 1.2s ease both;
-    }
-    .hero h1{font-size:clamp(34px,5vw,56px);line-height:1.05;margin-bottom:14px}
-    .hero p{font-size:clamp(16px,2.5vw,18px);opacity:.95;margin-bottom:22px;max-width:640px}
-
-    /* SECTION */
-    section{padding:70px 0;animation:fadeInUp .6s ease both}
-    h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:18px;font-weight:700}
+    section{padding:68px 0}
+    h2{font-size:clamp(22px,3.5vw,32px);margin:0 0 18px}
     .muted{color:var(--muted)}
-
-    /* LAYANAN */
     .grid{display:grid;gap:22px}
     .two{grid-template-columns:repeat(2,minmax(0,1fr))}
     .three{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .layanan-card{
-      display:flex;flex-direction:column;align-items:center;text-align:center;
-      padding:20px;border-radius:var(--radius);
-      background:var(--card);box-shadow:0 6px 16px rgba(0,0,0,0.08);
-      transition:all .3s ease;cursor:pointer;
+
+    .layanan-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
-    .layanan-card:hover{
-      transform:translateY(-6px) scale(1.03);
-      box-shadow:0 12px 28px rgba(0,0,0,0.15);
+    .layanan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+    .layanan-card:hover img {transform: scale(1.03);}
+    .layanan-card:active {transform: translateY(-2px);box-shadow: 0 4px 10px rgba(0,0,0,0.18);}
+    .layanan-card.selected {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0 0 3px var(--brand-2);
+      border: 2px solid var(--brand-2);
     }
 
-    /* GALERI */
-    .gallery{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-    .gallery img{
-      aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .gallery img:hover{transform:scale(1.04);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+    .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery img{border-radius:16px;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;box-shadow:var(--shadow)}
+    @media (max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}.three{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
+    @media (max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    .btn-container {text-align: center;margin-top: 24px;}
+    .btn-more {display: inline-block;background: #1f8a70;color: #fff;padding: 12px 24px;border-radius: 8px;font-weight: 600;text-decoration: none;transition: 0.3s;box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
+    .btn-more:hover {background: #0ea5e9;transform: translateY(-2px);}
 
-    /* FORM */
     .form{display:grid;gap:14px}
-    .input{
-      padding:12px 14px;border:1px solid rgba(12,34,49,.15);
-      border-radius:12px;background:#fff;font:inherit;
-      transition:all .25s ease;
-    }
+    .input{padding:12px 14px;border:1px solid rgba(12,34,49,.15);border-radius:12px;background:#fff;font:inherit}
     .input:focus{outline:3px solid var(--ring);border-color:transparent}
     .stack{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
     @media (max-width:700px){.stack{grid-template-columns:1fr}}
-    small{font-size:.9rem}
 
-    /* FOOTER */
-    footer{padding:28px 0 56px;color:var(--muted);font-size:.95rem;text-align:center}
+    footer{padding:28px 0 56px;color:var(--muted)}
 
-    /* LIGHTBOX */
-    .lightbox{
-      position:fixed;inset:0;background:rgba(0,0,0,.85);
-      display:none;align-items:center;justify-content:center;padding:24px;z-index:100;
-    }
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:24px;z-index:100}
     .lightbox.open{display:flex}
     .lightbox img{max-width:min(100%,1000px);max-height:80vh;border-radius:16px}
-    .lightbox button{
-      position:absolute;top:18px;right:18px;border:none;background:#fff;
-      padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:700;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-
+    .lightbox button{position:absolute;top:18px;right:18px;border:none;background:#fff;padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:700}
   </style>
 </head>
 <body>
@@ -167,7 +119,7 @@
   </div>
 </header>
 
-<section id="home" class="hero">
+<section id="home" class="hero" role="banner" aria-label="Selaras hero">
   <div class="container hero-inner">
     <h1>Selaras Beach</h1>
     <p>Beach is Calling and I must Go.</p>
@@ -179,13 +131,13 @@
   <div class="container grid two" style="align-items:center">
     <div>
       <h2>Tentang Kami</h2>
-      <p class="muted">
-        Selaras Beach adalah ruang untuk menikmati, berbagi, dan berkumpul.  
-        Di sini kita bercerita, berkolaborasi, dan hidup selaras dengan alam serta sesama.  
-        Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan, dan cinta.
-      </p>
+      <p class="muted">Selaras Beach adalah ruang untuk menikmati, berbagi, dan berkumpul.
+      Di sini kita bercerita, berkolaborasi, dan belajar selaras dengan alam serta sesama.
+      Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan, dan cinta. Tempat ini juga terbuka untuk berbagai kegiatan positif bersama teman-teman Selaras.</p>
     </div>
-    <div><img loading="lazy" src="assets/selaras2.jpg" alt="Pemandangan pantai tropis Selaras Beach" /></div>
+    <div class="card">
+      <img loading="lazy" src="assets/selaras2.jpg" alt="Pemandangan pantai tropis" />
+    </div>
   </div>
 </section>
 
@@ -194,9 +146,15 @@
     <h2>Layanan</h2>
     <p class="muted">Pilih layanan untuk melihat informasi lebih lanjut</p>
     <div class="grid three" style="margin-top:16px">
-      <a href="bar.html"><article class="layanan-card"><img src="assets/BAR.png" alt="Bar dan minuman segar" /><h3>Bar & Minuman</h3></article></a>
-      <a href="sup.html"><article class="layanan-card"><img src="assets/SUP.png" alt="Stand Up Paddle Board di Selaras Beach" /><h3>Stand Up Paddle</h3></article></a>
-      <a href="spot.html"><article class="layanan-card"><img src="assets/TONGKRONG.png" alt="Spot nongkrong pantai" /><h3>Spot Nongkrong</h3></article></a>
+      <a href="bar.html" class="layanan-link">
+        <article class="layanan-card"><img src="assets/BAR.png" alt="Minuman segar di bar" /><h3>Bar & Minuman</h3></article>
+      </a>
+      <a href="sup.html" class="layanan-link">
+        <article class="layanan-card"><img src="assets/SUP.png" alt="Stand Up Paddle Board" /><h3>Stand Up Paddle Board</h3></article>
+      </a>
+      <a href="spot.html" class="layanan-link">
+        <article class="layanan-card"><img src="assets/TONGKRONG.png" alt="Spot Nongkrong" /><h3>Spot Nongkrong</h3></article>
+      </a>
     </div>
   </div>
 </section>
@@ -206,18 +164,18 @@
     <h2>Galeri</h2>
     <p class="muted">Klik foto untuk memperbesar.</p>
     <div class="grid gallery" style="margin-top:12px">
-      <img src="assets/gambar1.jpeg" alt="Kegiatan di Selaras Beach" />
-      <img src="assets/gambar2.jpeg" alt="Stand Up Paddle di laut tenang" />
-      <img src="assets/gambar4.jpg" alt="Bersantai di atas paddle board" />
+      <img src="assets/gambar1.jpeg" alt="fun" />
+      <img src="assets/gambar2.jpeg" alt="stand up padle board" />
+      <img src="assets/gambar4.jpg" alt="santai di atas padle board" />
       <img src="assets/gambar10.jpeg" alt="Pasir putih dan laut tenang" />
-      <img src="assets/gambar11.jpeg" alt="Ombak kecil sore hari" />
-      <img src="assets/gambar6.jpeg" alt="Paddle board siluet senja" />
-      <img src="assets/gambar8.jpeg" alt="Kelapa dan langit biru tropis" />
-      <img src="assets/gambar7.jpeg" alt="Sunset di pantai Selaras" />
+      <img src="assets/gambar11.jpeg" alt="Ombak kecil" />
+      <img src="assets/gambar6.jpeg" alt="Paddle board siluet" />
+      <img src="assets/gambar8.jpeg" alt="Kelapa dan langit biru" />
+      <img src="assets/gambar7.jpeg" alt="Sunset lembut" />
     </div>
   </div>
-  <div style="text-align:center;margin-top:24px">
-    <a href="galeri.html" class="btn">Lihat Galeri Lengkap</a>
+  <div class="btn-container">
+    <a href="galeri.html" class="btn-more">Lihat Galeri Lengkap</a>
   </div>
 </section>
 
@@ -225,7 +183,7 @@
   <div class="container grid two" style="align-items:start">
     <div>
       <h2>Reservasi</h2>
-      <p class="muted">Isi form berikut, lalu klik <b>Kirim via WhatsApp</b>. Pesan otomatis akan terbuka di WhatsApp kami.</p>
+      <p class="muted">Isi form berikut. Setelah klik <b>Kirim via WhatsApp</b>, pesan otomatis akan terbuka di WhatsApp.</p>
       <form class="form" onsubmit="return sendWA(event)">
         <div class="stack">
           <input class="input" type="text" id="nama" placeholder="Nama" required />
@@ -243,14 +201,18 @@
         </div>
         <textarea class="input" id="catatan" rows="4" placeholder="Catatan (opsional)"></textarea>
         <button class="btn" type="submit">Kirim via WhatsApp</button>
-        <small class="muted">WA resmi: <b id="waDisplay">+62 82162852567</b><br>Jam operasional: <b>08.00 – 18.00 WIB</b></small>
+        <small class="muted">WA resmi: <b id="waDisplay">+62 82162852567</b></small>
       </form>
     </div>
-    <div class="card"><div class="pad">
-      <h3>Lokasi</h3>
-      <p class="muted">Dabo Singkep, Kepulauan Riau</p>
-      <p class="muted">Hubungi kami via WhatsApp untuk petunjuk arah atau info detail lokasi.</p>
-    </div></div>
+
+    <!-- Kartu lokasi tanpa peta -->
+    <div class="card">
+      <div class="pad">
+        <h3 style="margin:0 0 10px">Lokasi</h3>
+        <p class="muted">Dabo Singkep, Kepulauan Riau</p>
+        <p class="muted">Silakan hubungi kami via WhatsApp untuk petunjuk arah atau detail lokasi.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -258,24 +220,30 @@
   <div class="container grid two">
     <div>
       <h2>Kontak</h2>
-      <p class="muted">Untuk kolaborasi, event, atau pertanyaan umum.</p>
+      <p class="muted">Hubungi kami untuk kolaborasi, event kecil, atau pertanyaan umum.</p>
       <div class="grid" style="gap:10px;margin-top:8px">
-        <a class="btn" href="https://wa.me/6282162852567" target="_blank">WhatsApp</a>
-        <a class="btn" style="background:var(--brand-2)" href="https://instagram.com/selaras.beach/" target="_blank">Instagram</a>
+        <a class="btn" href="https://wa.me/6282162852567" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" style="background:var(--brand-2)" href="https://instagram.com/selaras.beach/" target="_blank" rel="noopener">Instagram</a>
         <a class="btn" style="background:#0f172a" href="mailto:selaras@example.com">Email</a>
       </div>
     </div>
-    <div><img src="assets/selaras2.jpg" alt="Bangku kayu di pantai saat sunset" /></div>
+    <div class="card">
+      <img src="assets/selaras2.jpg" alt="Bangku kayu di pantai saat sunset" />
+    </div>
   </div>
 </section>
 
 <footer>
-  <div class="container">
-    <small>© <span id="year"></span> Selaras Beach – Made with ♥ on the island.</small>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+    <small>© <span id="year"></span> Selaras Beach. All rights reserved.</small>
+    <small>Made with ♥ on the island.</small>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox"><button onclick="closeLightbox()">✕</button><img id="lightboxImg" alt="" /></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto diperbesar">
+  <button aria-label="Tutup" onclick="closeLightbox()">Tutup ✕</button>
+  <img id="lightboxImg" alt="Foto galeri" />
+</div>
 
 <script>
   const WA_NUMBER = '6282162852567';
@@ -284,12 +252,13 @@
 
   function sendWA(e){
     e.preventDefault();
-    const nama = namaEl.value.trim();
-    const tanggal = tanggalEl.value;
-    const jam = jamEl.value;
-    const jumlah = jumlahEl.value;
-    const layanan = layananSelect.value;
-    const catatan = catatanEl.value.trim();
+    const nama = document.getElementById('nama').value.trim();
+    const tanggal = document.getElementById('tanggal').value;
+    const jam = document.getElementById('jam').value;
+    const jumlah = document.getElementById('jumlah').value;
+    const layanan = document.getElementById('layananSelect').value;
+    const catatan = document.getElementById('catatan').value.trim();
+
     const lines = [
       'Halo Selaras Beach, saya ingin reservasi:',
       `• Nama: ${nama}`,
@@ -299,16 +268,21 @@
       `• Layanan: ${layanan}`,
       catatan ? `• Catatan: ${catatan}` : null,
     ].filter(Boolean);
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank');
+
+    const text = encodeURIComponent(lines.join('\n'));
+    const url = `https://wa.me/${WA_NUMBER}?text=${text}`;
+    window.open(url, '_blank');
+    return false;
   }
 
-  const namaEl=document.getElementById('nama'),
-        tanggalEl=document.getElementById('tanggal'),
-        jamEl=document.getElementById('jam'),
-        jumlahEl=document.getElementById('jumlah'),
-        layananSelect=document.getElementById('layananSelect'),
-        catatanEl=document.getElementById('catatan');
-
-  const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lightboxImg');
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
   document.querySelectorAll('#galeri img').forEach(img=>{
-    img.addEventListener('click',()=>{lbImg.src=img.src;lb.classList.add('open')});
+    img.addEventListener('click',()=>{lbImg.src = img.src; lb.classList.add('open')})
+  });
+  function closeLightbox(){lb.classList.remove('open'); lbImg.removeAttribute('src');}
+  lb.addEventListener('click',(e)=>{ if(e.target===lb) closeLightbox();});
+  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeLightbox();});
+</script>
+</body>
+</html>
