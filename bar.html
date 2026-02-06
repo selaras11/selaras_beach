@@ -1,271 +1,281 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selaras Bar</title>
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #1f8a70;
-      --secondary: #0ea5e9;
-      --light: #f9fafb;
-      --dark: #0c2231;
-      --muted: #6c7a86;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selaras Bar</title>
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--light);
-      color: var(--dark);
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    header {
-      background: var(--secondary);
-      color: white;
-      text-align: center;
-      padding: 1.5rem 1rem;
-    }
+<style>
+:root{
+  --primary:#1f8a70;
+  --accent:#38bdf8;
+  --bg:#f7fbfa;
+  --card:#ffffff;
+  --text:#0c2231;
+  --muted:#6b7c87;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
+*{box-sizing:border-box}
 
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1rem;
-      opacity: 0.9;
-    }
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(to bottom,#eafaf7,#f7fbfa);
+  color:var(--text);
+}
 
-    .container {
-      max-width: 900px;
-      margin: 1.5rem auto;
-      padding: 0 1rem;
-    }
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#1f8a70,#38bdf8);
+  color:white;
+  padding:3.5rem 1rem 3rem;
+  text-align:center;
+  border-bottom-left-radius:32px;
+  border-bottom-right-radius:32px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
 
-    .bar-img {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-    }
+.hero h1{
+  margin:0;
+  font-size:2.4rem;
+  letter-spacing:.5px;
+}
 
-    .bar-img img {
-      width: 100%;
-      display: block;
-    }
+.hero p{
+  margin-top:.6rem;
+  opacity:.9;
+}
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      margin-bottom: 1.5rem;
-      transition: 0.3s ease;
-    }
+/* LAYOUT */
+.container{
+  max-width:920px;
+  margin:auto;
+  padding:1.5rem;
+}
 
-    .card h2 {
-      margin-top: 0;
-      font-size: 1.4rem;
-      color: var(--primary);
-    }
+/* IMAGE */
+.bar-img{
+  margin-top:-60px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
 
-    .card h3 {
-      margin-top: 1.2rem;
-      font-size: 1.1rem;
-      color: var(--muted);
-    }
+.bar-img img{
+  width:100%;
+  display:block;
+}
 
-    ul {
-      list-style: none;
-      padding-left: 0.5rem;
-      margin: 0;
-    }
+/* HOURS */
+.hours{
+  margin:1.8rem auto;
+  background:linear-gradient(135deg,#38bdf8,#1f8a70);
+  color:white;
+  padding:1rem;
+  text-align:center;
+  border-radius:14px;
+  font-weight:600;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
 
-    ul li {
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+/* CARD */
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:1.6rem;
+  margin-bottom:1.6rem;
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+  transition:.3s ease;
+}
 
-    .hours {
-      text-align: center;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.8rem;
-      background: var(--secondary);
-      color: white;
-      border-radius: 12px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 36px rgba(0,0,0,.1);
+}
 
-    .btn-back {
-      display: inline-block;
-      margin: 2rem auto 1rem;
-      text-decoration: none;
-      background: var(--primary);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
+.card h2{
+  margin-top:0;
+  color:var(--primary);
+  font-size:1.4rem;
+}
 
-    .btn-back:hover {
-      background: #166b56;
-    }
+.card h3{
+  margin-top:1.3rem;
+  font-size:1.05rem;
+  color:var(--muted);
+}
 
-    .card:hover, .bar-img:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
+/* MENU LIST */
+ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
 
-    /* Galeri */
-    .gallery {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+ul li{
+  padding:.45rem 0;
+  display:flex;
+  justify-content:space-between;
+  font-size:.95rem;
+  border-bottom:1px dashed #e3f2ef;
+}
 
-    .gallery-track {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
+ul li:last-child{border-bottom:none}
 
-    .gallery img {
-      width: 100%;
-      flex-shrink: 0;
-    }
+/* GALLERY */
+.gallery{
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+}
 
-    .gallery button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.4);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 8px;
-    }
+.gallery-track{
+  display:flex;
+  transition:transform .5s ease;
+}
 
-    .gallery button:hover {
-      background: rgba(0,0,0,0.6);
-    }
+.gallery img{
+  width:100%;
+  flex-shrink:0;
+}
 
-    .prev { left: 10px; }
-    .next { right: 10px; }
+.gallery button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.45);
+  color:white;
+  border:none;
+  padding:.6rem 1rem;
+  border-radius:50px;
+  cursor:pointer;
+}
 
-  </style>
+.gallery button:hover{background:rgba(0,0,0,.7)}
+.prev{left:12px}
+.next{right:12px}
+
+/* BACK */
+.back{
+  text-align:center;
+  margin:2rem 0;
+}
+
+.back a{
+  text-decoration:none;
+  background:var(--primary);
+  color:white;
+  padding:.9rem 1.6rem;
+  border-radius:30px;
+  box-shadow:0 6px 20px rgba(0,0,0,.15);
+}
+
+.back a:hover{background:#166b56}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:2rem}
+  ul li{font-size:.9rem}
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Selaras Bar</h1>
-    <p>Nikmati minuman segar & suasana tropis di tepi pantai</p>
-  </header>
+<section class="hero">
+  <h1>Selaras Bar</h1>
+  <p>Minuman segar & suasana tropis di tepi pantai</p>
+</section>
 
-  <div class="container">
-    <!-- Foto Bar -->
-    <div class="bar-img">
-      <img src="assets/bar2.jpeg" alt="Bar mini Selaras Beach dengan suasana tropis">
-    </div>
+<div class="container">
 
-    <!-- Jam Operasional -->
-    <div class="hours">
-      🕒 Jam Operasional: 10:00 Pagi – 08:00 Malam
-    </div>
+  <div class="bar-img">
+    <img src="assets/bar2.jpeg" alt="Selaras Bar">
+  </div>
 
-    <!-- Menu -->
-    <div class="card">
-      <h2>🌴 Menu Selaras</h2>
+  <div class="hours">
+    🕒 Setiap Hari • 10.00 – 20.00
+  </div>
 
-      <h3>✨ Signature Drink</h3>
-      <ul>
-        <li>Selaras Coffee — Rp 16.000</li>
-        <li>Coffee Avocado — Rp 16.000</li>
-      </ul>
+  <div class="card">
+    <h2>🌴 Menu Selaras</h2>
 
-      <h3>☕ Coffee</h3>
-      <ul>
-        <li>Americano (Ice) — Rp 10.000</li>
-        <li>Black Coffee (Hot) — Rp 7.000</li>
-        <li>V60 — Rp 18.000</li>
-        <li>Latte (Ice) — Rp 15.000</li>
-        <li>Cappuccino (Ice) — Rp 15.000</li>
-        <li>Kopi Susu — Rp 8.000</li>
-      </ul>
+    <h3>✨ Signature Drink</h3>
+    <ul>
+      <li><span>Selaras Coffee</span><span>Rp 16.000</span></li>
+      <li><span>Coffee Avocado</span><span>Rp 16.000</span></li>
+    </ul>
 
-      <h3>🥤 Fresh Drink</h3>
-      <ul>
-        <li>Blue Ocean — Rp 13.000</li>
-        <li>Squash Lemon — Rp 15.000</li>
-        <li>Squash Orange — Rp 15.000</li>
-        <li>Lemon Ice — Rp 13.000</li>
-      </ul>
+    <h3>☕ Coffee</h3>
+    <ul>
+      <li><span>Americano (Ice)</span><span>Rp 10.000</span></li>
+      <li><span>Black Coffee (Hot)</span><span>Rp 7.000</span></li>
+      <li><span>V60</span><span>Rp 18.000</span></li>
+      <li><span>Latte (Ice)</span><span>Rp 15.000</span></li>
+      <li><span>Cappuccino (Ice)</span><span>Rp 15.000</span></li>
+      <li><span>Kopi Susu</span><span>Rp 8.000</span></li>
+    </ul>
 
-      <h3>🍫 Tea & Chocolate</h3>
-      <ul>
-        <li>Chocolate (Ice Rp 12.000 | Hot Rp 10.000)</li>
-        <li>Teh Tarik (Ice Rp 12.000 | Hot Rp 10.000)</li>
-        <li>Milo (Ice Rp 13.000 | Hot Rp 11.000)</li>
-        <li>Extrajos Susu (Ice) — Rp 12.000</li>
-        <li>Tea (Ice Rp 10.000 | Hot Rp 8.000)</li>
-        <li>Lemon Tea (Ice Rp 10.000 | Hot Rp 8.000)</li>
-      </ul>
-    </div>
+    <h3>🥤 Fresh Drink</h3>
+    <ul>
+      <li><span>Blue Ocean</span><span>Rp 13.000</span></li>
+      <li><span>Squash Lemon</span><span>Rp 15.000</span></li>
+      <li><span>Squash Orange</span><span>Rp 15.000</span></li>
+      <li><span>Lemon Ice</span><span>Rp 13.000</span></li>
+    </ul>
 
-    <!-- Fasilitas -->
-    <div class="card">
-      <h2>Fasilitas</h2>
-      <ul>
-        <li>⚡ Colokan listrik untuk mengisi daya</li>
-        <li>📚 Buku bacaan ringan untuk bersantai</li>
-        <li>🌴 Suasana santai di tepi pantai</li>
-        <li>🤝 Terbuka untuk sumbangan buku</li>
-      </ul>
-    </div>
+    <h3>🍫 Tea & Chocolate</h3>
+    <ul>
+      <li><span>Chocolate</span><span>Rp 10–12k</span></li>
+      <li><span>Teh Tarik</span><span>Rp 10–12k</span></li>
+      <li><span>Milo</span><span>Rp 11–13k</span></li>
+      <li><span>Extrajos Susu</span><span>Rp 12.000</span></li>
+      <li><span>Tea / Lemon Tea</span><span>Rp 8–10k</span></li>
+    </ul>
+  </div>
 
-    <!-- Galeri Foto -->
-    <div class="card">
-      <h2>📸 Suasana Bar</h2>
-      <div class="gallery">
-        <div class="gallery-track">
-          <img src="assets/bar1.jpeg" alt="Suasana bar siang hari">
-          <img src="assets/bar2.jpeg" alt="Bar Selaras dengan pencahayaan sore">
-          <img src="assets/bar3.jpeg" alt="Minuman signature di bar">
-        </div>
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
+  <div class="card">
+    <h2>✨ Fasilitas</h2>
+    <ul>
+      <li><span>⚡ Colokan listrik</span></li>
+      <li><span>📚 Buku bacaan</span></li>
+      <li><span>🌴 Pantai & sunset</span></li>
+      <li><span>🤝 Donasi buku</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📸 Suasana Bar</h2>
+    <div class="gallery">
+      <div class="gallery-track">
+        <img src="assets/bar1.jpeg">
+        <img src="assets/bar2.jpeg">
+        <img src="assets/bar3.jpeg">
       </div>
-    </div>
-
-    <div style="text-align:center;">
-      <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
     </div>
   </div>
 
-  <script>
-    const track = document.querySelector('.gallery-track');
-    const slides = document.querySelectorAll('.gallery img');
-    const prev = document.querySelector('.prev');
-    const next = document.querySelector('.next');
-    let index = 0;
+  <div class="back">
+    <a href="index.html">← Kembali ke Beranda</a>
+  </div>
 
-    function showSlide(i) {
-      index = (i + slides.length) % slides.length;
-      track.style.transform = `translateX(${-index * 100}%)`;
-    }
+</div>
 
-    prev.addEventListener('click', () => showSlide(index - 1));
-    next.addEventListener('click', () => showSlide(index + 1));
-  </script>
+<script>
+const track=document.querySelector('.gallery-track');
+const slides=document.querySelectorAll('.gallery img');
+let index=0;
+document.querySelector('.next').onclick=()=>show(index+1);
+document.querySelector('.prev').onclick=()=>show(index-1);
+function show(i){
+  index=(i+slides.length)%slides.length;
+  track.style.transform=`translateX(-${index*100}%)`;
+}
+</script>
 
 </body>
 </html>
