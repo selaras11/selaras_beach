@@ -1,292 +1,141 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Selaras Beach</title>
-  <meta name="description" content="Selaras Beach – bar mini, stand up paddle board, dan spot nongkrong santai di tepi pantai." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f7fafb;
-      --card:#ffffff;
-      --ink:#0c2231;
-      --muted:#6c7a86;
-      --brand:#1f8a70;
-      --brand-2:#0ea5e9;
-      --accent:#e2f3f1;
-      --ring:rgba(31,138,112,.35);
-      --shadow:0 10px 30px rgba(18, 43, 66, 0.08);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg)}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Selaras Beach</title>
+<meta name="description" content="Selaras Beach – bar mini, stand up paddle board, dan spot nongkrong santai di tepi pantai."/>
 
-    .container{width:min(1100px, 92%);margin-inline:auto}
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(12,34,49,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
-    .brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand-2),var(--brand));display:grid;place-items:center;color:white;box-shadow:var(--shadow)}
-    .brand-mark svg{width:20px;height:20px}
-    .menu{display:flex;gap:22px;align-items:center}
-    .menu a{font-weight:500;color:var(--muted)}
-    .menu a:hover{color:var(--ink)}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:var(--brand);color:#fff;font-weight:600;box-shadow:0 8px 20px rgba(31,138,112,.25)}
-    .btn:hover{filter:brightness(1.05)}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    .hero{position:relative;isolation:isolate}
-    .hero::before{content:"";position:absolute;inset:0;background:url('assets/gambar15.jpg') center/cover no-repeat;z-index:-2}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(255,255,255,0) 55%, rgba(247,250,251,1) 100%);z-index:-1}
-    .hero-inner{padding:96px 0 120px;color:#fff}
-    .hero h1{font-size:clamp(32px,5vw,52px);line-height:1.05;margin:0 0 14px}
-    .hero p{font-size:clamp(16px,2.5vw,18px);opacity:.95;margin:0 0 22px;max-width:640px}
+<style>
+/* ==== ROOT ==== */
+:root{
+--bg:#f7fafb;--card:#fff;--ink:#0c2231;--muted:#6c7a86;
+--brand:#1f8a70;--brand-2:#0ea5e9;--ring:rgba(31,138,112,.35);
+--shadow:0 10px 30px rgba(18,43,66,.08);--radius:18px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--ink)}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 
-    section{padding:68px 0}
-    h2{font-size:clamp(22px,3.5vw,32px);margin:0 0 18px}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:22px}
-    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* ==== HEADER ==== */
+header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);z-index:10}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;width:92%;max-width:1100px;margin:auto}
+.menu{display:flex;gap:20px;align-items:center}
+.menu a{color:var(--muted);font-weight:500}
 
-    .layanan-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 18px;
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-    .layanan-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-    }
-    .layanan-card:hover img {transform: scale(1.03);}
-    .layanan-card:active {transform: translateY(-2px);box-shadow: 0 4px 10px rgba(0,0,0,0.18);}
-    .layanan-card.selected {
-      transform: translateY(-8px);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0 0 3px var(--brand-2);
-      border: 2px solid var(--brand-2);
-    }
+/* ==== LANGUAGE SWITCH ==== */
+.lang-switch button{
+border:none;padding:6px 10px;border-radius:20px;
+background:#fff;cursor:pointer;font-size:12px;
+box-shadow:0 2px 6px rgba(0,0,0,.15)
+}
 
-    .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .gallery img{border-radius:16px;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;box-shadow:var(--shadow)}
-    @media (max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}.three{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
-    @media (max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)}}
-    .btn-container {text-align: center;margin-top: 24px;}
-    .btn-more {display: inline-block;background: #1f8a70;color: #fff;padding: 12px 24px;border-radius: 8px;font-weight: 600;text-decoration: none;transition: 0.3s;box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
-    .btn-more:hover {background: #0ea5e9;transform: translateY(-2px);}
+/* ==== HERO ==== */
+.hero{position:relative;color:#fff}
+.hero::before{content:"";position:absolute;inset:0;background:url('assets/gambar15.jpg') center/cover no-repeat;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),#f7fafb);z-index:-1}
+.hero-inner{padding:100px 4%;max-width:1100px;margin:auto}
+.hero h1{font-size:48px}
+.hero p{max-width:600px}
 
-    .form{display:grid;gap:14px}
-    .input{padding:12px 14px;border:1px solid rgba(12,34,49,.15);border-radius:12px;background:#fff;font:inherit}
-    .input:focus{outline:3px solid var(--ring);border-color:transparent}
-    .stack{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:700px){.stack{grid-template-columns:1fr}}
+/* ==== SECTION ==== */
+section{padding:70px 4%;max-width:1100px;margin:auto}
+.grid{display:grid;gap:22px}
+.two{grid-template-columns:repeat(2,1fr)}
+.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:800px){.two,.three{grid-template-columns:1fr}}
 
-    footer{padding:28px 0 56px;color:var(--muted)}
+.btn{
+display:inline-block;background:var(--brand);color:#fff;
+padding:12px 22px;border-radius:999px;font-weight:600
+}
 
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:24px;z-index:100}
-    .lightbox.open{display:flex}
-    .lightbox img{max-width:min(100%,1000px);max-height:80vh;border-radius:16px}
-    .lightbox button{position:absolute;top:18px;right:18px;border:none;background:#fff;padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:700}
-  </style>
+/* ==== FOOTER ==== */
+footer{text-align:center;color:var(--muted);padding:40px}
+</style>
 </head>
+
 <body>
-  
+
 <header>
-  <div class="container nav">
-    <a href="#home" class="brand" aria-label="Selaras Beach">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 12c3.5 0 3.5-4 7-4s3.5 4 7 4 3.5-4 7-4"/>
-        </svg>
-      </span> Selaras Beach
-    </a>
-    <nav class="menu">
-      <a href="#layanan">Layanan</a>
-      <a href="galeri.html">Galeri</a>
-      <a href="#reservasi">Reservasi</a>
-     
-      <a href="#kontak">Kontak</a>
-    </nav>
-  </div>
+<div class="nav">
+<strong>Selaras Beach</strong>
+
+<nav class="menu">
+<a href="#tentang" data-id="Tentang" data-en="About"></a>
+<a href="#layanan" data-id="Layanan" data-en="Services"></a>
+<a href="#galeri" data-id="Galeri" data-en="Gallery"></a>
+<a href="#kontak" data-id="Kontak" data-en="Contact"></a>
+</nav>
+
+<div class="lang-switch">
+<button onclick="setLang('id')">🇮🇩 ID</button>
+<button onclick="setLang('en')">🇬🇧 EN</button>
+</div>
+</div>
 </header>
 
-<section id="home" class="hero" role="banner" aria-label="Selaras hero">
-  <div class="container hero-inner">
-    <h1>Selaras Beach</h1>
-    <p>Beach is Calling and I must Go.</p>
-    <a class="btn" href="#reservasi" aria-label="Reservasi via WhatsApp">Reservasi via WhatsApp</a>
-  </div>
+<section class="hero">
+<div class="hero-inner">
+<h1 data-id="Selaras Beach" data-en="Selaras Beach"></h1>
+<p data-id="Pantai memanggil dan aku harus pergi."
+   data-en="The beach is calling and I must go."></p>
+<a class="btn" href="#kontak"
+data-id="Reservasi via WhatsApp"
+data-en="Book via WhatsApp"></a>
+</div>
 </section>
 
 <section id="tentang">
-  <div class="container grid two" style="align-items:center">
-    <div>
-      <h2>Tentang Kami</h2>
-      <p class="muted">Selaras Beach adalah ruang untuk menikmati, berbagi, dan berkumpul.
-      Di sini kita bercerita, berkolaborasi, dan belajar selaras dengan alam serta sesama.
-      Harmoni yang tercipta adalah undangan untuk hidup dengan rasa syukur, kebebasan, dan cinta. Tempat ini juga terbuka untuk berbagai kegiatan positif bersama teman-teman Selaras. Kami berharap setiap orang yang datang bisa membawa getaran baik, sehingga kita semua bisa merasakan frekuensi yang benar-benar selaras.</p>
-    </div>
-    <div class="card">
-      <img loading="lazy" src="assets/selaras2.jpg" alt="Pemandangan pantai tropis" />
-    </div>
-  </div>
+<h2 data-id="Tentang Kami" data-en="About Us"></h2>
+<p data-id="Selaras Beach adalah ruang untuk menikmati, berbagi, dan berkumpul selaras dengan alam."
+   data-en="Selaras Beach is a space to relax, connect, and live in harmony with nature."></p>
 </section>
 
 <section id="layanan">
-  <div class="container">
-    <h2>Layanan</h2>
-    <p class="muted">Pilih layanan untuk melihat informasi lebih lanjut</p>
-    <div class="grid three" style="margin-top:16px">
-      <a href="bar.html" class="layanan-link">
-        <article class="layanan-card"><img src="assets/BAR.png" alt="Minuman segar di bar" /><h3>Bar & Minuman</h3></article>
-      </a>
-      <a href="sup.html" class="layanan-link">
-        <article class="layanan-card"><img src="assets/SUP.png" alt="Stand Up Paddle Board" /><h3>Stand Up Paddle Board</h3></article>
-      </a>
-      <a href="spot.html" class="layanan-link">
-        <article class="layanan-card"><img src="assets/TONGKRONG.png" alt="Spot Nongkrong" /><h3>Spot Nongkrong</h3></article>
-      </a>
-    </div>
-  </div>
+<h2 data-id="Layanan" data-en="Our Services"></h2>
+<div class="grid three">
+<div><strong data-id="Bar & Minuman" data-en="Bar & Drinks"></strong></div>
+<div><strong data-id="Stand Up Paddle" data-en="Stand Up Paddle Board"></strong></div>
+<div><strong data-id="Spot Nongkrong" data-en="Chill Spot"></strong></div>
+</div>
 </section>
 
 <section id="galeri">
-  <div class="container">
-    <h2>Galeri</h2>
-    <p class="muted">Klik foto untuk memperbesar.</p>
-    <div class="grid gallery" style="margin-top:12px">
-      <img src="assets/gambar1.jpeg" alt="fun" />
-      <img src="assets/gambar2.jpeg" alt="stand up padle board" />
-      <img src="assets/gambar4.jpg" alt="santai di atas padle board" />
-      <img src="assets/gambar10.jpeg" alt="Pasir putih dan laut tenang" />
-      <img src="assets/gambar11.jpeg" alt="Ombak kecil" />
-      <img src="assets/gambar6.jpeg" alt="Paddle board siluet" />
-      <img src="assets/gambar8.jpeg" alt="Kelapa dan langit biru" />
-      <img src="assets/gambar7.jpeg" alt="Sunset lembut" />
-    </div>
-  </div>
-  <div class="btn-container">
-    <a href="galeri.html" class="btn-more">Lihat Galeri Lengkap</a>
-  </div>
-</section>
-
-<section id="reservasi">
-  <div class="container grid two" style="align-items:start">
-    <div>
-      <h2>Reservasi</h2>
-      <p class="muted">Isi form berikut. Setelah klik <b>Kirim via WhatsApp</b>, pesan otomatis akan terbuka di WhatsApp.</p>
-      <form class="form" onsubmit="return sendWA(event)">
-        <div class="stack">
-          <input class="input" type="text" id="nama" placeholder="Nama" required />
-          <input class="input" type="date" id="tanggal" required />
-          <input class="input" type="time" id="jam" required />
-        </div>
-        <div class="stack" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-          <input class="input" type="number" id="jumlah" placeholder="Jumlah Orang" min="1" required />
-          <select class="input" id="layananSelect" required>
-            <option value="">Pilih Layanan</option>
-            <option>Stand Up Paddle</option>
-                    <option>Spot Nongkrong</option>
-          </select>
-        </div>
-        <textarea class="input" id="catatan" rows="4" placeholder="Catatan (opsional)"></textarea>
-        <button class="btn" type="submit">Kirim via WhatsApp</button>
-        <small class="muted">WA resmi: <b id="waDisplay">+62 82162852567</b></small>
-      </form>
-    </div>
-
-    <!-- Kartu lokasi tanpa peta -->
-    <div class="card">
-      <div class="pad">
-        <h3 style="margin:0 0 10px">Lokasi</h3>
-        <p class="muted">Dabo Singkep, Kepulauan Riau</p>
-        <p class="muted">Silakan hubungi kami via WhatsApp untuk petunjuk arah atau detail lokasi.</p>
-      </div>
-    </div>
-  </div>
+<h2 data-id="Galeri" data-en="Gallery"></h2>
+<p data-id="Klik foto untuk memperbesar"
+   data-en="Tap image to enlarge"></p>
 </section>
 
 <section id="kontak">
-  <div class="container grid two">
-    <div>
-      <h2>Kontak</h2>
-      <p class="muted">Hubungi kami untuk kolaborasi, event kecil, atau pertanyaan umum.</p>
-      <div class="grid" style="gap:10px;margin-top:8px">
-        <a class="btn" href="https://wa.me/6282162852567" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn" style="background:var(--brand-2)" href="https://instagram.com/selaras.beach/" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn" style="background:#0f172a" href="mailto:selaras@example.com">Email</a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="assets/selaras2.jpg" alt="Bangku kayu di pantai saat sunset" />
-    </div>
-  </div>
+<h2 data-id="Kontak" data-en="Contact"></h2>
+<p data-id="Hubungi kami via WhatsApp atau Instagram"
+   data-en="Contact us via WhatsApp or Instagram"></p>
+<a class="btn" href="https://wa.me/6282162852567" target="_blank">WhatsApp</a>
 </section>
 
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
-    <small>© <span id="year"></span> Selaras Beach. All rights reserved.</small>
-    <small>Made with ♥ on the island.</small>
-  </div>
+<small>© <span id="year"></span> Selaras Beach</small>
 </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto diperbesar">
-  <button aria-label="Tutup" onclick="closeLightbox()">Tutup ✕</button>
-  <img id="lightboxImg" alt="Foto galeri" />
-</div>
-
 <script>
-  const WA_NUMBER = '6282162852567';
-  document.getElementById('waDisplay').textContent = '+'.concat(WA_NUMBER.replace(/^/, ''));
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 
-  function sendWA(e){
-    e.preventDefault();
-    const nama = document.getElementById('nama').value.trim();
-    const tanggal = document.getElementById('tanggal').value;
-    const jam = document.getElementById('jam').value;
-    const jumlah = document.getElementById('jumlah').value;
-    const layanan = document.getElementById('layananSelect').value;
-    const catatan = document.getElementById('catatan').value.trim();
+function setLang(lang){
+document.querySelectorAll("[data-id]").forEach(el=>{
+el.textContent = el.dataset[lang];
+});
+localStorage.setItem("lang",lang);
+document.documentElement.lang = lang;
+}
 
-    const lines = [
-      'Halo Selaras Beach, saya ingin reservasi:',
-      `• Nama: ${nama}`,
-      `• Tanggal: ${tanggal}`,
-      `• Jam: ${jam}`,
-      `• Jumlah Orang: ${jumlah}`,
-      `• Layanan: ${layanan}`,
-      catatan ? `• Catatan: ${catatan}` : null,
-    ].filter(Boolean);
-
-    const text = encodeURIComponent(lines.join('\n'));
-    const url = `https://wa.me/${WA_NUMBER}?text=${text}`;
-    window.open(url, '_blank');
-    return false;
-  }
-
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('#galeri img').forEach(img=>{
-    img.addEventListener('click',()=>{lbImg.src = img.src; lb.classList.add('open')})
-  });
-  function closeLightbox(){lb.classList.remove('open'); lbImg.removeAttribute('src');}
-  lb.addEventListener('click',(e)=>{ if(e.target===lb) closeLightbox();});
-  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeLightbox();});
+setLang(localStorage.getItem("lang") || "id");
 </script>
+
 </body>
 </html>
-
-
-
-
