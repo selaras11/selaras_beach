@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selaras Beach Gallery</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#fdfaf5;
+  color:#333;
+}
+
+header{
+  height:70vh;
+  background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), 
+  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+}
+
+header h1{
+  font-size:4rem;
+  letter-spacing:4px;
+}
+
+header p{
+  margin-top:10px;
+  font-size:1.2rem;
+}
+
+.filter-buttons{
+  text-align:center;
+  padding:30px;
+}
+
+.filter-buttons button{
+  background:white;
+  border:1px solid #ccc;
+  padding:10px 20px;
+  margin:5px;
+  cursor:pointer;
+  border-radius:30px;
+  transition:0.3s;
+}
+
+.filter-buttons button:hover{
+  background:#0ea5a8;
+  color:white;
+}
+
+.gallery{
+  column-count:3;
+  column-gap:15px;
+  padding:30px;
+}
+
+.gallery-item{
+  break-inside:avoid;
+  margin-bottom:15px;
+  position:relative;
+}
+
+.gallery img,
+.gallery video{
+  width:100%;
+  border-radius:15px;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  opacity:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:2rem;
+  border-radius:15px;
+  transition:0.3s;
+}
+
+.gallery-item:hover .overlay{
+  opacity:1;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  background:#1f2937;
+  color:white;
+}
+
+@media(max-width:768px){
+  .gallery{
+    column-count:2;
+  }
+
+  header h1{
+    font-size:2.5rem;
+  }
+}
+
+@media(max-width:480px){
+  .gallery{
+    column-count:1;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>SELARAS BEACH</h1>
+    <p>Sun. Sea. Memories.</p>
+  </div>
+</header>
+
+<section class="filter-buttons">
+  <button>All</button>
+  <button>Beach</button>
+  <button>Sunset</button>
+  <button>Activities</button>
+  <button>Videos</button>
+</section>
+
+<section class="gallery">
+
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+    <div class="overlay"><i class="fa fa-search"></i></div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21" alt="Sunset">
+    <div class="overlay"><i class="fa fa-search"></i></div>
+  </div>
+
+  <div class="gallery-item">
+    <video controls>
+      <source src="sample-video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206" alt="Activities">
+    <div class="overlay"><i class="fa fa-search"></i></div>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Selaras Beach — Tropical Memories Forever</p>
+</footer>
+
+</body>
+</html>
